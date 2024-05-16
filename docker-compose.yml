@@ -1,14 +1,16 @@
 version: '3'
 services:
   app:
-    build: ./app
+    build:
+      context: ./app
     container_name: app
     restart: always
     ports:
       - "3000:3000"
 
   admin:
-    build: ./admin
+    build:
+      context: ./admin
     container_name: admin
     restart: always
     ports:
