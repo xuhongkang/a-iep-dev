@@ -1,18 +1,14 @@
 version: '3.9'
 services:
   app:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
+    build: ./app
     container_name: app
     restart: always
     ports:
       - "3000:3000"
 
   admin:
-    build:
-      context: ./admin
-      dockerfile: Dockerfile
+    build: ./admin
     container_name: admin
     restart: always
     ports:
