@@ -1,8 +1,9 @@
-version: '3'
+version: '3.9'
 services:
   app:
     build:
       context: ./app
+      dockerfile: Dockerfile
     container_name: app
     restart: always
     ports:
@@ -11,6 +12,7 @@ services:
   admin:
     build:
       context: ./admin
+      dockerfile: Dockerfile
     container_name: admin
     restart: always
     ports:

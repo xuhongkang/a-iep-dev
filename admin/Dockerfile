@@ -4,14 +4,19 @@ WORKDIR /admin
 COPY package*.json yarn.lock ./
 
 # Separate base image to handle dependencies
-RUN yarn install
+RUN npm install
+
 FROM base as builder
+
 COPY . .
 
 # Build the application
 RUN yarn build
+
 FROM node:18.8-alpine as runtime
+
 WORKDIR /admin
+
 ENV NODE_ENV=production
 ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
 
