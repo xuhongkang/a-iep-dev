@@ -7,13 +7,6 @@ services:
     ports:
       - "3000:3000"
 
-  admin:
-    build: ./admin
-    container_name: admin
-    restart: always
-    ports:
-      - "3001:3001"
-
   nginx:
     image: nginx:alpine
     container_name: nginx
@@ -26,4 +19,3 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl
     depends_on:
       - app
-      - admin
