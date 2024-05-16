@@ -1,0 +1,77 @@
+{
+    "HomePage": {
+        "Welcome": "Hello!",
+        "Welcome2": "Welcome to AI-EP Version 2.3.1 Beta Testing. Please enter your Access Key below if you have one:",
+        "Welcome3": "Get Started",
+        "LoginMessage":"Log In Now!",
+        "Description1": "Transform your IEP experience with Instant Translations, providing real-time, comprehensive translations to eliminate wait times and enhance understanding. Our generative AI-driven chatbot delivers personalized answers and support.",
+        "SignUpMessage": "Don't Have an Account? Register Now!",
+        "Description2": "Our solution aims to democratize access to educational resources, ensuring that all parents, regardless of language or background, can effectively participate in and contribute to their child's personalized educational plan.",
+        "LoginText": "Log In",
+        "RegisterText": "Register",
+        "UsernameText": "Username",
+        "PasswordText": "Password"
+    },
+    "LocaleLayout": {
+        "title": "AI-EP: Translate and Understand Your IEP!"
+    },
+    "Dashboard": {
+        "ErrorMessage": "Beta version 2.3 does not support dashboard and upload due to provisioning issues, please await the next version!",
+        "MenuButtonMessage": "Return to Menu"
+    },
+    "LocaleSwitcher": {
+        "label": "Choose Your Language"
+    },
+    "Workspace": {
+        "TranslationText": "IEP Translation",
+        "PromptText": "What would you like to know more about your child's IEP process?",
+        "InputText": "Describe Here",
+        "AskText": "Ask",
+        "BotText": "Bot",
+        "UserText": "User"
+    },
+    "UserSelect": {
+        "l1": "New to Individualized Education Programs?",
+        "l2": "↑ Read more about the IEP Process & Timeline",
+        "l3": "For newcoming parents without IEP documents",
+        "r1": "Need Insights on your IEP Document?",
+        "r2": "↑ Try out the IEP Digest and personalized chatbot",
+        "r3": "For experienced parents trying to understand their child's IEP"
+    },
+    "Workspace2": {
+        "goBackText": "Return to Home",
+        "digestTitle": "Summarize My IEP",
+        "digestDescription": "Please use the below tools to view your processed IEP document.",
+        "accessError": "The Access Code You've Provided Does Not Exist, Please Try Again",
+        "accessMessage": "Click below to get a TRANSLATION + SUMMARY of your IEP",
+        "accessPlaceholder": "Enter access code",
+        "accessMessage2": "To upload your IEP, type in your access code. Didn't get an access code? Contact us at 650.562.6200",
+        "accessSubmit": "Submit",
+        "downloadTabName": "Download",
+        "textTabName": "Full Text",
+        "servicesTabName": "Services",
+        "goalsTabName": "Goals",
+        "scoresTabName": "Scores",
+        "chatbotTitle": "Ask My IEP",
+        "chatbotDescription": "Type a question below to find out more about your child's IEP.",
+        "sendButtonText": "Send",
+        "p1": "What is an IEP?",
+        "p2": "What special services will be provided?",
+        "p3": "How will the school communicate my child's progress?",
+        "p4": "What specific goals have been set for my child?",
+        "detailText": "Show/Hide Details",
+        "baselineText": "Baseline",
+        "pr1": "Progress Report 1",
+        "pr2": "Progress Report 2",
+        "pr3": "Progress Report 3",
+        "goalText": "Goal",
+        "startText": "Start & End",
+        "durationText": "Duration",
+        "frequencyText": "Frequency",
+        "providerText": "Provider",
+        "commentsText": "Comments",
+        "sendPlaceholderText": "Type your question here.",
+        "showDigest": "Summarize My IEP",
+        "showChatbot": "Ask Question About My IEP"
+    }
+}
