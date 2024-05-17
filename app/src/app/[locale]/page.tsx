@@ -1,4 +1,3 @@
-import WorkspacePage from '@/components/WorkspacePage'
 import {useTranslations} from 'next-intl';
 import {unstable_setRequestLocale} from 'next-intl/server';
 
