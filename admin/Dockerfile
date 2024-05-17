@@ -1,13 +1,13 @@
 FROM node:20-alpine
-WORKDIR /app
+FROM base as builder
 
-COPY package.json package-lock.json ./
-RUN npm install
+WORKDIR /admin
+COPY package*.json ./
 
-COPY . .
-
-RUN npm run build
+RUN yarn install --production
+COPY --from=builder /dist ./dist
+COPY --from=builder /build ./build
 
 EXPOSE 3001
 
-CMD ["npm", "start"]
+CMD ["node", "dist/server.js"]
