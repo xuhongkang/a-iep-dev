@@ -7,10 +7,15 @@ required_vars=(
 
 for var in "${required_vars[@]}"; do
   if [ -z "${!var}" ]; then
-    echo "Error: $var is not set. Please configure it in the .env file."
-    exit 1
+    echo "Error: $var is not set. Please configure it."
+    missing_vars=true
   fi
 done
+
+if [ "$missing_vars" = true ]; then
+  echo "One or more required environment variables are missing. Exiting."
+  exit 1
+fi
 
 echo "All required environment variables are set."
 
