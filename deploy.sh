@@ -1,24 +1,5 @@
 #!/bin/bash
 
-# Check if all environment variables are set
-required_vars=(
-  POSTGRES_PASSWORD
-)
-
-for var in "${required_vars[@]}"; do
-  if [ -z "${!var}" ]; then
-    echo "Error: $var is not set. Please configure it."
-    missing_vars=true
-  fi
-done
-
-if [ "$missing_vars" = true ]; then
-  echo "One or more required environment variables are missing. Exiting."
-  exit 1
-fi
-
-echo "All required environment variables are set."
-
 # Install needed dependencies
 sudo yum install docker
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
