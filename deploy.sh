@@ -1,27 +1,41 @@
 #!/bin/bash
 
-# Update the system and install Docker
-sudo yum update -y
-sudo yum install -y docker
+# Check if all environment variables are set
+required_vars=(
+  POSTGRES_PASSWORD
+)
 
-# Start the Docker service
-sudo service docker start
+for var in "${required_vars[@]}"; do
+  if [ -z "${!var}" ]; then
+    echo "Error: $var is not set. Please configure it in the .env file."
+    exit 1
+  fi
+done
 
-# Add the ec2-user to the Docker group
-sudo usermod -a -G docker ec2-user
+echo "All required environment variables are set."
 
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# Start Docker Compose services
+docker-compose -f /path/to/your/docker-compose.yml up -d
 
-# Set the permissions for Docker Compose
-sudo chmod +x /usr/local/bin/docker-compose
+# Build and run frontend applications
+cd /app-frontend
+npm install
+npm run build
+npm start &
 
-# Stop and remove existing Docker containers and volumes
-sudo docker-compose down -v
+cd /app-admin
+npm install
+npm run build
+npm start &
 
-# Build and start Docker containers
-sudo docker-compose build
-sudo docker-compose up -d
+# Build and run backend applications
+# cd /app-backend
+# pip install -r requirements.txt
+# uvicorn main:app --host 0.0.0.0 --port 8000 &
 
-# Clean up dangling images
-sudo docker system prune -f
+# cd /llm-service
+# pip install -r requirements.txt
+# uvicorn main:app --host 0.0.0.0 --port 8001 &
+
+# Start NGINX
+nginx -c /nginx.conf
