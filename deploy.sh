@@ -14,6 +14,12 @@ done
 
 echo "All required environment variables are set."
 
+# Install needed dependencies
+sudo yum install docker
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo yum install nginx -y
+
 # Start Docker Compose services
 docker-compose -f /path/to/your/docker-compose.yml up -d
 
