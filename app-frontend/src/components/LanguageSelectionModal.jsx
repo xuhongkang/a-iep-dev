@@ -1,11 +1,11 @@
 'use client';
 
 import {useTransition} from 'react';
-import {localeNames, localeSwitcherButtonText, localeSwitcherModalLabels} from '@/config';
+import {localeNames, languageSelectionButtonText, languageSelectionLabels} from '@/config';
 import {useRouter, usePathname} from '@/navigation';
 import {useLocale} from 'next-intl';
 
-export default function LocaleSwitcherModal() {
+export default function LanguageSelectionModal() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
@@ -19,22 +19,22 @@ export default function LocaleSwitcherModal() {
   }
 
   function openModal() {
-    document.getElementById('localeSwitcherModal').showModal()
+    document.getElementById('languageSelectionModal').showModal()
   }
 
   function closeModal() {
-    document.getElementById('localeSwitcherModal').close()
+    document.getElementById('languageSelectionModal').close()
   }
 
-  const formatLocaleSwitcherText = (localeSwitcherText) => {
+  const formatLocaleSwitcherText = (listOfSupportedTexts) => {
     // Ensure the current locale exists in the locales object
-    if (!(currentLocale in localeSwitcherText)) {
+    if (!(currentLocale in localeNames)) {
       throw new Error("Current locale not found in locale map.");
     }
     // Extract the value for the current locale
-    const currentValue = localeSwitcherText[currentLocale];
+    const currentValue = listOfSupportedTexts[currentLocale];
     // Remove the current locale from the list and then concatenate with the current value
-    const otherValues = Object.entries(localeSwitcherText)
+    const otherValues = Object.entries(listOfSupportedTexts)
       .filter(([key]) => key !== currentLocale)
       .map(([, value]) => value)
       .join('-');
@@ -50,12 +50,12 @@ export default function LocaleSwitcherModal() {
   return (
     <div className='h-full'>
       <button className="btn btn-secondary btn-xs md:btn-md lg:btn-lg h-full" onClick={openModal}>
-        {formatLocaleSwitcherText(localeSwitcherButtonText)}
+        {formatLocaleSwitcherText(languageSelectionButtonText)}
       </button>
-      <dialog id="localeSwitcherModal" className="modal items-center">
+      <dialog id="languageSelectionModal" className="modal items-center">
         <div className="flex-col modal-box justify-start modal-action h-auto">
           <div className='p-4'>
-            {formatLocaleSwitcherText(localeSwitcherModalLabels)}
+            {formatLocaleSwitcherText(languageSelectionLabels)}
           </div>
           {Object.entries(localeNames).map(([localeID, localeName]) => (
             <button className="btn btn-secondary justify-center my-2 outline-dotted outline-black" key={localeID}
