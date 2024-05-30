@@ -1,6 +1,4 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+export default {
   daisyui: {
     themes: [
       {
@@ -47,5 +45,3 @@ const config: Config = {
     },
   }
 };
-
-export default config;
