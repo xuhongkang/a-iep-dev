@@ -1,6 +1,12 @@
 version: '3.8'
 
 services:
+  nextjs:
+    build: ./app-frontend
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
   postgres:
     image: postgres:latest
     container_name: postgres
