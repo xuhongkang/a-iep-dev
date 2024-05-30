@@ -1,30 +1,28 @@
-# Base on offical Node.js Alpine image
-FROM node:alpine
+# Dockerfile for Next.js Application
 
-# Set working directory
+# Step 1: Use the official Node.js 18 image as the base image
+FROM node:18-alpine AS builder
+
+# Step 2: Set the working directory inside the container
 WORKDIR /app
 
-RUN npm install --global pm2
+# Step 3: Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Copy package.json and package-lock.json before other files
-# Utilise Docker cache to save re-installing dependencies if unchanged
-COPY ./package*.json ./
+# Step 4: Install dependencies
+RUN npm install
 
-# Install dependencies
-RUN npm install --production
+# Step 5: Copy the rest of the application code
+COPY . .
 
-# Copy all files
-COPY ./ ./
-
-# Build app
+# Step 6: Build the Next.js application
 RUN npm run build
 
-# Expose the listening port
+# Step 7: Install serve to serve the production build
+RUN npm install -g serve
+
+# Step 8: Expose the port the app runs on
 EXPOSE 3000
 
-# Run container as non-root (unprivileged) user
-# The node user is provided in the Node.js Alpine base image
-USER node
-
-# Run npm start script when container starts
-CMD [ "pm2-runtime", "npm", "--", "start" ]
+# Step 9: Start the application
+CMD ["serve", "-s", "out"]

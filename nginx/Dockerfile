@@ -1,15 +1,10 @@
-# Base on offical NGINX Alpine image
-FROM nginx:alpine
+# Dockerfile for NGINX
 
-# Remove any existing config files
-RUN rm -f /etc/nginx/conf.d/*
+# Step 1: Use the official NGINX image as the base image
+FROM nginx:latest
 
-# Copy config files
-# *.conf files in conf.d/ dir get included in main config
-COPY ./default.conf /etc/nginx/conf.d/
+# Step 2: Copy the custom NGINX configuration file to the container
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose the listening port
+# Step 3: Expose the port NGINX runs on
 EXPOSE 80
-
-# Launch NGINX
-CMD [ "nginx", "-g", "daemon off;" ]
