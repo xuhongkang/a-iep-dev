@@ -14,7 +14,7 @@ services:
       context: ./app-backend
       dockerfile: Dockerfile
     ports:
-      - '8000:8000'
+      - '8000:80'
     restart: always
 
   nginx:
