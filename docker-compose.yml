@@ -16,6 +16,34 @@ services:
     ports:
       - '8000:8000'
     restart: always
+  
+  app-admin:
+    build:
+      context: ./app-admin
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongo
+    environment:
+      DATABASE_URI: mongodb://aiep-admin:aiep2024!@localhost:27017
+      NODE_ENV: production
+      PAYLOAD_SECRET: e2346cdbc3f8f418fefacc39
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    command:
+      - --storageEngine=wiredTiger
+    volumes:
+      - data:/data/db
+    logging:
+      driver: none
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: aiep-admin
+      MONGO_INITDB_ROOT_PASSWORD: aiep2024!
 
   nginx:
     build:
@@ -27,3 +55,6 @@ services:
       - app-frontend
       - app-backend
     restart: always
+
+volumes:
+  data:
