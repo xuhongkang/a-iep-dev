@@ -1,4 +1,5 @@
 import path from 'path'
+import Users from './collections/Users';
 import Posts from './collections/Posts';
 import Pages from './collections/Pages';
 import search from '@payloadcms/plugin-search';
@@ -12,10 +13,12 @@ import { buildConfig } from 'payload/config'
 export default buildConfig({
   serverURL: "http://localhost:3000",
   admin: {
+    user: Users.slug,
     bundler: webpackBundler(),
   },
   editor: slateEditor({}),
   collections: [
+    Users, 
     Posts, 
     Pages
   ],
