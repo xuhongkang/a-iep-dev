@@ -1,6 +1,6 @@
 
 export async function fetchBackendTestData() {
-    const response = await fetch('/private/');
+    const response = await fetch('/');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

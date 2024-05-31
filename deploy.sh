@@ -14,6 +14,7 @@ sudo docker-compose up --build -d
 
 ## To rebuild
 sudo docker-compose down
+sudo git pull
 sudo docker-compose up --build -d
 
 
