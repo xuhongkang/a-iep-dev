@@ -1,24 +1,23 @@
-# Dockerfile for Next.js app
+FROM node:22-alpine as base
 
-# Use the official Node.js image as a base image
-FROM node:22-alpine
+FROM base as builder
 
-# Set the working directory inside the container
 WORKDIR /app
-
-# Copy the package.json and package-lock.json files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
 COPY . .
-
-# Build the Next.js application
+RUN npm install
 RUN npm run build
 
-# Expose the port the app runs on
+FROM base as runtime
+
+WORKDIR /app
+COPY package*.json  ./
+
+RUN npm install
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/build ./build
+
 EXPOSE 3000
 
 CMD ["node", "dist/server.js"]
