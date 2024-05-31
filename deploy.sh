@@ -10,7 +10,12 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 # Build and run the Docker containers
 cd ./aiep-app
-sudo docker-compose up --build
+sudo docker-compose up --build -d
+
+## To rebuild
+sudo docker-compose down
+docker-compose up --build -d
+
 
 # Optionally, renew Let's Encrypt certificates
 # sudo apt-get install -y certbot

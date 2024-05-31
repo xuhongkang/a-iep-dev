@@ -11,6 +11,14 @@ services:
       NODE_ENV: production
     restart: always
 
+  app-backend:
+    build:
+      context: ./app-backend
+      dockerfile: Dockerfile
+    ports:
+      - '8000:80'
+    restart: always
+
   nginx:
     build:
       context: ./nginx
@@ -19,4 +27,5 @@ services:
       - '80:80'
     depends_on:
       - app-frontend
+      - app-backend
     restart: always
