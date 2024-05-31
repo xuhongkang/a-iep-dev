@@ -14,7 +14,7 @@ sudo docker-compose up --build -d
 
 ## To rebuild
 sudo docker-compose down
-docker-compose up --build -d
+sudo docker-compose up --build -d
 
 
 # Optionally, renew Let's Encrypt certificates
