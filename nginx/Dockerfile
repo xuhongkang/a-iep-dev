@@ -7,4 +7,4 @@ FROM nginx:latest
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose the port NGINX will run on
-EXPOSE 80
+EXPOSE 8000
