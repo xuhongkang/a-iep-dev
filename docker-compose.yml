@@ -1,24 +1,22 @@
+version: '3.8'
+
 services:
   app-frontend:
     build:
       context: ./app-frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
-    networks:
-      - app-network
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+    restart: always
 
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - '80:80'
     depends_on:
       - app-frontend
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+    restart: always
