@@ -18,6 +18,6 @@ RUN npm install --production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/build ./build
 
-EXPOSE 3001
+EXPOSE 3000
 
 CMD ["node", "dist/server.js"]
