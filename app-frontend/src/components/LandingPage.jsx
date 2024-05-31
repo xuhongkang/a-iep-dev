@@ -30,8 +30,8 @@ export default function LandingPage() {
       <div className="flex flex-col w-full px-5 sm:px-6 md:px-7 lg:px-10 items-center mt-8 sm:mt-10 md:mt-12 lg:mt-16">
         <h1 className="flex text-secondary-content">MyIEP Portal</h1>
         <div className='flex flex-col text-neutral-content py-10 sm:py-12 md:py-16 lg:py-20'>
-            <h3 className='flex mb-6 sm:mb-8 md:mb-10 lg:mb-14'>MyIEP helps you navigate and understand your child's Individualized Education Program (IEP) with ease and confidence, free of charge.</h3>
-            <h3 className='flex'>Whether you're new to IEPs or looking for a better way to manage educational planning, MyIEP is here to support you every step of the way. After you log into your portal, you will be able to :</h3>
+            <h3 className='flex mb-6 sm:mb-8 md:mb-10 lg:mb-14'>MyIEP helps you navigate and understand your child&apos;s Individualized Education Program (IEP) with ease and confidence, free of charge.</h3>
+            <h3 className='flex'>Whether you&apos;re new to IEPs or looking for a better way to manage educational planning, MyIEP is here to support you every step of the way. After you log into your portal, you will be able to :</h3>
         </div>
         <div className="flex justify-between px-4 sm:px-5 md:px-6 lg:px-8 py-5 sm:py-6 md:py-8 lg:py-10">
             <div className="w-1/3 flex flex-col items-center">
@@ -89,7 +89,7 @@ export default function LandingPage() {
 				<h1 className='flex text-primary-content mb-6 sm:mb-8 md:mb-10 lg:mb-14'>Who We Are?</h1>
 				<h3 className='flex text-primary-content mb-6 sm:mb-8 md:mb-10 lg:mb-14'>The AI-EP project is a collaborative work between the Burnes Center For Social change and Innovate Public school and their community of parents and caregivers.</h3>
 				<h3 className='flex text-primary-content mb-6 sm:mb-8 md:mb-10 lg:mb-14'>We are a team of dedicated educators, advocates, students, and parents committed to utilizing impactful AI that enhances educational outcomes.</h3>
-				<h3 className='flex text-primary-content'>We believe that empowered parents are crucial to a child's educational success, and our tool is designed to strengthen parents or caregivers' ability to participate effectively in their child's educational planning.</h3>
+				<h3 className='flex text-primary-content'>We believe that empowered parents are crucial to a child&apos; s educational success, and our tool is designed to strengthen parents or caregivers&apos; ability to participate effectively in their child&apos; s educational planning.</h3>
 			</div>
 			<div className='flex flex-col w-1/3'>
 				<img
