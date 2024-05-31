@@ -1,24 +1,27 @@
-# Dockerfile for Next.js app
+FROM node:18.8-alpine as base
 
-# Use the official Node.js image as a base image
-FROM node:22-alpine
+FROM base as builder
 
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the package.json and package-lock.json files
+WORKDIR /home/node/app
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
 COPY . .
+RUN yarn install
+RUN yarn build
 
-# Build the Next.js application
-RUN npm run build
+FROM base as runtime
 
-# Expose the port the app runs on
-EXPOSE 3001
+ENV NODE_ENV=production
+ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
+
+WORKDIR /home/node/app
+COPY package*.json  ./
+COPY yarn.lock ./
+
+RUN yarn install --production
+COPY --from=builder /home/node/app/dist ./dist
+COPY --from=builder /home/node/app/build ./build
+
+EXPOSE 3000
 
 CMD ["node", "dist/server.js"]
