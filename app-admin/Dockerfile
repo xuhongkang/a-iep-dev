@@ -14,6 +14,8 @@ FROM base as runtime
 WORKDIR /home/node
 COPY package*.json  ./
 
+ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
+
 RUN yarn install --production
 COPY --from=builder /home/node/dist ./dist
 COPY --from=builder /home/node/build ./build
