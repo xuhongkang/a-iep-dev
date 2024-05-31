@@ -9,19 +9,9 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "jsx": "react",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@payload-config": [
-        "./payload.config.ts"
-      ]
-    },
+      "payload/generated-types": ["./src/payload-types.ts"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "build"],
