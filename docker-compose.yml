@@ -26,7 +26,7 @@ services:
     depends_on:
       - mongo
     environment:
-      DATABASE_URI: mongodb://mongo:27017/payload
+      DATABASE_URI: mongodb://aiep-admin:aiep2024!@mongo:27017
       NODE_ENV: production
       PAYLOAD_SECRET: e2346cdbc3f8f418fefacc39
     restart: always
@@ -39,6 +39,9 @@ services:
       - --storageEngine=wiredTiger
     volumes:
       - data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: aiep-admin
+      MONGO_INITDB_ROOT_PASSWORD: aiep2024!
 
   nginx:
     build:
