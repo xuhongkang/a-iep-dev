@@ -2,24 +2,22 @@ FROM node:18-alpine as base
 
 FROM base as builder
 
-WORKDIR /home/node
+WORKDIR /app
 COPY package*.json ./
 
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN npm install
+RUN npm build
 
 FROM base as runtime
 
-ENV NODE_ENV=production
-
-WORKDIR /home/node
+WORKDIR /app
 COPY package*.json  ./
 
-RUN yarn install --production
-COPY --from=builder /home/node/dist ./dist
-COPY --from=builder /home/node/build ./build
+RUN yarn install
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/build ./build
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.js"]
+CMD ["npm", "run dev"]
