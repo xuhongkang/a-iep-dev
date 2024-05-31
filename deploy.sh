@@ -2,12 +2,14 @@
 
 # Install needed dependencies
 sudo yum update
-sudo yum install docker
+sudo yum install -y git docker
+sudo git clone https://github.com/xuhongkang/aiep-app.git
 sudo service docker start 
 sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Build and run the Docker containers
+cd ./aiep-app
 sudo docker-compose up --build
 
 # Optionally, renew Let's Encrypt certificates
