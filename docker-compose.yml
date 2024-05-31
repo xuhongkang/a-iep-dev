@@ -28,7 +28,6 @@ services:
     environment:
       DATABASE_URI: mongodb://mongo:27017/payload
       NODE_ENV: production
-      PAYLOAD_SECRET: e2346cdbc3f8f418fefacc39
     restart: always
 
   mongo:
