@@ -18,7 +18,6 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [
-    Users, 
     Posts, 
     Pages
   ],
