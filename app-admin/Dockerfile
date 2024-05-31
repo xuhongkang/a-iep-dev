@@ -14,10 +14,10 @@ FROM base as runtime
 WORKDIR /app
 COPY package*.json  ./
 
-RUN npm install
+RUN npm install --production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/build ./build
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["node", "dist/server.js"]
