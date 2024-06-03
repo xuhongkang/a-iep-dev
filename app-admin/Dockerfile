@@ -2,7 +2,7 @@
 FROM node:22-alpine
 
 ENV PORT=3001
-ENV DATABASE_URI=mongodb://aiep-admin:aiep2024!@127.0.0.1:27017
+ENV DATABASE_URI=mongodb://aiep-admin:aiep2024!@app-admin:27017
 ENV PAYLOAD_SECRET=d1b8a0cf8777070cad101e1d
 ENV PAYLOAD_PUBLIC_SERVER_URL=http://app-admin:3001
 ENV NEXT_PUBLIC_SERVER_URL=http://app-admin:3001
@@ -24,6 +24,6 @@ COPY . .
 RUN npm run build
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["node", "dist/server.js"]
