@@ -1,14 +1,4 @@
 services:
-  app-frontend:
-    build:
-      context: ./app-frontend
-      dockerfile: Dockerfile
-    ports:
-      - '3000:3000'
-    environment:
-      NODE_ENV: production
-    restart: always
-
   app-backend:
     build:
       context: ./app-backend
@@ -22,7 +12,7 @@ services:
       context: ./app-admin
       dockerfile: Dockerfile
     ports:
-      - '3001:3000'
+      - '3000:3000'
     depends_on:
       - mongo
     environment:
