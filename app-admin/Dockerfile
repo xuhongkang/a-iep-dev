@@ -2,6 +2,7 @@
 FROM node:22-alpine
 
 ENV PORT=3001
+ENV DATABASE_URI=mongodb://aiep-admin:aiep2024!@mongo:27017
 ENV PAYLOAD_SECRET=d1b8a0cf8777070cad101e1d
 ENV PAYLOAD_PUBLIC_SERVER_URL=http://app-admin:3001
 ENV NEXT_PUBLIC_SERVER_URL=http://app-admin:3001
