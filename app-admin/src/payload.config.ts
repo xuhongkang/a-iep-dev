@@ -13,6 +13,12 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
+  routes: {
+    api: '/admin/api',
+    admin: '/admin',
+    graphQL: '/admin/graphql',
+    graphQLPlayground: '/admin/graphql-playground',
+  },
   editor: slateEditor({}),
   collections: [Users],
   typescript: {
