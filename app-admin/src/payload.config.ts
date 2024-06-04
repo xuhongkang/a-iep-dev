@@ -15,7 +15,7 @@ export default buildConfig({
   },
   routes: {
     api: '/cms/api',
-    admin: '/cms/admin',
+    admin: '/admin',
     graphQL: '/cms/graphql',
     graphQLPlayground: '/cms/graphql-playground',
   },
