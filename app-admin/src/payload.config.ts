@@ -21,6 +21,9 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [Users],
+  csrf: [
+    'a-iep.org',
+  ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
