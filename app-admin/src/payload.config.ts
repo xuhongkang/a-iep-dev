@@ -22,7 +22,6 @@ export default buildConfig({
   editor: slateEditor({}),
   collections: [Users],
   csrf: [
-    'a-iep.org',
     'app-backend:8000'
   ],
   typescript: {

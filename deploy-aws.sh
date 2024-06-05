@@ -20,4 +20,4 @@ sudo docker-compose up --build -d
 
 # Optionally, renew Let's Encrypt certificates
 # sudo apt-get install -y certbot
-# sudo certbot --nginx -d a-iep-dev.com -d www.a-iep-dev.com
+# sudo certbot --nginx -d a-iep.org -d www.a-iep-dev.org
