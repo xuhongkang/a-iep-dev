@@ -17,7 +17,7 @@ def user_login(email: str, password: str):
     return response.json()
 
 @router.post("/signup/", dependencies=[Depends(private_cors_dependency)])
-def user_signup(name:str, email: str, password: str):
+def user_signup(email: str, password: str):
     url = 'http://app-admin:3000/cms/api/users'
     headers = {'Content-Type': 'application/json'}
     data = {
