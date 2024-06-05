@@ -14,7 +14,7 @@ def private_cors_dependency():
     return JSONResponse(
         {"detail": "Private CORS settings applied"},
         headers={
-            "Access-Control-Allow-Origin": "http://a-iep.org",
+            "Access-Control-Allow-Origin": "app-admin:3000",
             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
             "Access-Control-Allow-Headers": "Content-Type",
         },

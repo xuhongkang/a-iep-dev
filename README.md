@@ -15,7 +15,7 @@ aiep-app/
 ## Overview
 ### Frontend Application w/ NextJS
 
-The user-facing frontend web application hosted at a-iep.com. It serves users the below content:
+The user-facing frontend web application hosted at a-iep.org. It serves users the below content:
 1. Landing Page (What's an IEP? What's our Goal? Who are we?)
 2. Login Page (Signup, User & Guest Login)
 3. User Home Page (Select Tasks)

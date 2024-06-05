@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.post("/login/", dependencies=[Depends(public_cors_dependency)])
 def user_login(email: str, password: str):
-    url = 'http://a-iep.org/cms/api/users/login'
+    url = 'http://app-admin:3000/cms/api/users/login'
     headers = {'Content-Type': 'application/json'}
     data = {
         'email': email,
