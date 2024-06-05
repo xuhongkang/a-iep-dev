@@ -23,6 +23,7 @@ export default buildConfig({
   collections: [Users],
   csrf: [
     'a-iep.org',
+    'app-backend:8000'
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
