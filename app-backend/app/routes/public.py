@@ -12,6 +12,7 @@ def user_login(email: str, password: str):
     data = {
         'email': email,
         'password': password,
+        'user': 'user'
     }
     response = requests.post(url, headers=headers, json=data)
     return response.json()

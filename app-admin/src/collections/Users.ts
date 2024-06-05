@@ -16,9 +16,9 @@ const Users: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        'parent',
-        'admin',
-        'parent-advocate'
+        'user',
+        'advocate',
+        'admin'
       ],
     },
   ],
