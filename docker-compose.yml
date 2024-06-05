@@ -24,9 +24,8 @@ services:
     depends_on:
       - mongo
     environment:
-      DATABASE_URI: mongodb://aiep-admin:aiep2024!@mongo:27017
-      PAYLOAD_SECRET: d1b8a0cf8777070cad101e1d
-      PAYLOAD_CONFIG_PATH: dist/payload.config.js
+      DATABASE_URI: ${MONGODB_DATABASE_URI}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
     restart: always
 
   mongo:
@@ -36,8 +35,8 @@ services:
     volumes:
       - data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: aiep-admin
-      MONGO_INITDB_ROOT_PASSWORD: aiep2024!
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
 
   nginx:
     build:
@@ -45,10 +44,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+      - '433:433'
     depends_on:
       - app-frontend
       - app-admin
       - app-backend
+    volumes:
+      - /etc/letsencrypt/live/${DOMAIN}:/ssl/${DOMAIN}:ro
+      - /etc/letsencrypt/live/${WWW_DOMAIN}:/ssl/${WWW_DOMAIN}:ro
     restart: always
 
 volumes:
