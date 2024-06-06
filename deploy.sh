@@ -21,7 +21,7 @@ sudo service docker start
 
 # Configure Environment Variables
 # List of required environment variables
-required_env_vars=("DOMAIN" "WWW_DOMAIN", 'MONGO_INITDB_ROOT_USERNAME', 'MONGO_INITDB_ROOT_PASSWORD', 'PAYLOAD_SECRET')
+required_env_vars=("DOMAIN", "WWW_DOMAIN", 'MONGO_INITDB_ROOT_USERNAME', 'MONGO_INITDB_ROOT_PASSWORD', 'PAYLOAD_SECRET')
 
 # Function to prompt for environment variables
 prompt_for_env_var() {
@@ -50,7 +50,7 @@ for var in "${required_env_vars[@]}"; do
 done
 
 # Runs certbot to use Let's Encrypt to generate ssl certificates for the site
-sudo certbot certonly --standalone -d a-iep.org -d $DOMAIN $WWW_DOMAIN
+#sudo certbot certonly --standalone -d a-iep.org -d $DOMAIN $WWW_DOMAIN
 
 # Build and run the Docker containers
 cd ./aiep-app
