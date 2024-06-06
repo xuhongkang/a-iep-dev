@@ -24,7 +24,7 @@ services:
     depends_on:
       - mongo
     environment:
-      DATABASE_URI: mongodb://${DB_USER}:${DB_PASSWORD}@mongo:27017
+      DATABASE_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
     restart: always
 
@@ -52,6 +52,9 @@ services:
     volumes:
       - /etc/letsencrypt/live/${DOMAIN}:/ssl/${DOMAIN}:ro
       - /etc/letsencrypt/live/${WWW_DOMAIN}:/ssl/${WWW_DOMAIN}:ro
+    environment:
+      - DOMAIN: ${DOMAIN}
+      - WWW_DOMAIN: www.${DOMAIN}
     restart: always
 
 volumes:
