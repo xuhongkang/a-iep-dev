@@ -46,18 +46,18 @@ http {
 
     server {
         listen 443 ssl;
-        server_name ${DOMAIN} ${WWW_DOMAIN};
+        server_name ${DOMAIN} www.${DOMAIN};
 
         ssl_certificate /ssl/${DOMAIN}/fullchain.pem;
         ssl_certificate_key /ssl/${DOMAIN}/privkey.pem;
 
-        ssl_certificate /ssl/${WWW_DOMAIN}/fullchain.pem;
-        ssl_certificate_key /ssl/${WWW_DOMAIN}/privkey.pem;
+        ssl_certificate /ssl/www.${DOMAIN}/fullchain.pem;
+        ssl_certificate_key /ssl/www.${DOMAIN}/privkey.pem;
     }
 
     server {
         listen 80;
-        server_name ${DOMAIN} ${WWW_DOMAIN};
+        server_name ${DOMAIN} www.${DOMAIN};
 
         location / {
             proxy_set_header Host $host;

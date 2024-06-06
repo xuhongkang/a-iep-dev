@@ -53,7 +53,7 @@ done
 # Runs certbot to use Let's Encrypt to generate ssl certificates for the site
 sudo certbot certonly --standalone -d a-iep.org -d $DOMAIN www.$DOMAIN
 
-envsubst '${DOMAIN} ${WWW_DOMAIN}' < ./nginx/nginx.conf.template > ./nginx/nginx.conf
+envsubst '${DOMAIN}' < ./nginx/nginx.conf.template > ./nginx/nginx.conf
 
 # Build and run the Docker containers
 cd ./aiep-app
