@@ -24,7 +24,7 @@ services:
     depends_on:
       - mongo
     environment:
-      DATABASE_URI: ${MONGODB_DATABASE_URI}
+      DATABASE_URI: mongodb://${DB_USER}:${DB_PASSWORD}@mongo:27017
       PAYLOAD_SECRET: ${PAYLOAD_SECRET}
     restart: always
 
