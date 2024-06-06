@@ -54,7 +54,6 @@ services:
       - /etc/letsencrypt/live/www.a-iep.org:/ssl/www.a-iep.org:ro
     environment:
       DOMAIN: ${DOMAIN}
-    restart: always
 
 volumes:
   data:
