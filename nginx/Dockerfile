@@ -6,5 +6,7 @@ FROM nginx:latest
 # Copy custom NGINX configuration file to the container
 COPY nginx.conf /etc/nginx/nginx.conf
 
+COPY /etc/letsencrypt/live /ssl
+
 # Expose the port NGINX will run on
 EXPOSE 80 443

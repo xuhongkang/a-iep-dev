@@ -49,8 +49,6 @@ services:
       - app-frontend
       - app-admin
       - app-backend
-    volumes:
-      - /etc/letsencrypt/live:/ssl:ro
     environment:
       DOMAIN: ${DOMAIN}
     restart: always
