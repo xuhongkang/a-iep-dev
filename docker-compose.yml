@@ -51,7 +51,7 @@ services:
       - app-backend
     volumes:
       - /etc/letsencrypt/live/${DOMAIN}:/ssl/${DOMAIN}:ro
-      - /etc/letsencrypt/live/${WWW_DOMAIN}:/ssl/${WWW_DOMAIN}:ro
+      - /etc/letsencrypt/live/www.${DOMAIN}:/ssl/www.${DOMAIN}:ro
     environment:
       - DOMAIN: ${DOMAIN}
       - WWW_DOMAIN: www.${DOMAIN}
