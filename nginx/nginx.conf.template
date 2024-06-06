@@ -55,22 +55,13 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass http://app-admin:3000;
         }
-    }
 
-    server {
-        listen 443 ssl;
-        listen [::]:443 ssl;
-        server_name ${DOMAIN} www.${DOMAIN};
+        error_page 404 /404.html;
+        location = /404.html {
+        }
 
-        ssl_certificate /ssl/${DOMAIN}/fullchain.pem;
-        ssl_certificate_key /ssl/${DOMAIN}/privkey.pem;
-
-        ssl_certificate /ssl/www.${DOMAIN}/fullchain.pem;
-        ssl_certificate_key /ssl/www.${DOMAIN}/privkey.pem;
-
-        location / {
-            return 200 'It works!';
-            add_header Content-Type text/plain;
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
         }
     }
 }
