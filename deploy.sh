@@ -51,7 +51,7 @@ for var in $required_env_vars; do
 done
 
 # Runs certbot to use Let's Encrypt to generate ssl certificates for the site
-#sudo certbot certonly --standalone -d a-iep.org -d $DOMAIN $WWW_DOMAIN
+sudo certbot certonly --standalone -d a-iep.org -d $DOMAIN www.$DOMAIN
 
 # Build and run the Docker containers
 cd ./aiep-app
