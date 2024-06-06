@@ -1,4 +1,21 @@
 #!/bin/bash
+# List of required environment variables
+required_env_vars=('DOMAIN', 'WWW_DOMAIN', 'MONGO_INITDB_ROOT_USERNAME', 'MONGO_INITDB_ROOT_PASSWORD', 'PAYLOAD_SECRET')
+
+# Function to prompt for environment variables
+prompt_for_env_var() {
+  local var_name=$1
+  local var_value
+
+  # Check if the environment variable is already set
+  if [ -z "${!var_name}" ]; then
+    # Prompt for the environment variable if not set
+    read -p "Enter value for $var_name: " var_value
+    export $var_name=$var_value
+  else
+    echo "$var_name is already set to ${!var_name}"
+  fi
+}
 
 # Install needed dependencies
 # Add Docker's official GPG key:
@@ -20,24 +37,6 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo service docker start
 
 # Configure Environment Variables
-# List of required environment variables
-required_env_vars=('DOMAIN', 'WWW_DOMAIN', 'MONGO_INITDB_ROOT_USERNAME', 'MONGO_INITDB_ROOT_PASSWORD', 'PAYLOAD_SECRET')
-
-# Function to prompt for environment variables
-prompt_for_env_var() {
-  local var_name=$1
-  local var_value
-
-  # Check if the environment variable is already set
-  if [ -z "${!var_name}" ]; then
-    # Prompt for the environment variable if not set
-    read -p "Enter value for $var_name: " var_value
-    export $var_name=$var_value
-  else
-    echo "$var_name is already set to ${!var_name}"
-  fi
-}
-
 # Iterate through the list of required environment variables
 for var in "${required_env_vars[@]}"; do
   prompt_for_env_var "$var"
