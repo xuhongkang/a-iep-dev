@@ -50,10 +50,12 @@ services:
       - app-admin
       - app-backend
     volumes:
-      - /etc/letsencrypt/live/a-iep.org:/ssl/a-iep.org:ro
-      - /etc/letsencrypt/live/www.a-iep.org:/ssl/www.a-iep.org:ro
+      - /etc/letsencrypt/live/${DOMAIN}:/ssl/${DOMAIN}:ro
+      - /etc/letsencrypt/live/www.${DOMAIN}:/ssl/www.${DOMAIN}:ro
     environment:
       DOMAIN: ${DOMAIN}
+      WWW_DOMAIN: www.${DOMAIN}
+    restart: always
 
 volumes:
   data:
