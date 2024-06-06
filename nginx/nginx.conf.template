@@ -28,7 +28,7 @@ http {
 
     server {
         listen 80;
-        listen       [::]:80;
+        listen [::]:80;
         server_name ${DOMAIN} www.${DOMAIN};
 
         location / {
@@ -76,12 +76,20 @@ http {
         ssl_certificate /ssl/www.${DOMAIN}/fullchain.pem;
         ssl_certificate_key /ssl/www.${DOMAIN}/privkey.pem;
 
+        ssl_session_cache shared:SSL:1m;
+        ssl_session_timeout  10m;
+        ssl_ciphers HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers on;
+
         location / {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass https://app-frontend:3000;
+
+            proxy_ssl_server_name on;
+            proxy_ssl_verify off;
         }
 
         location /api/ {
@@ -91,6 +99,9 @@ http {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass https://app-backend:8000;
+
+            proxy_ssl_server_name on;
+            proxy_ssl_verify off;
         }
 
         location /cms/ {
@@ -99,6 +110,9 @@ http {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass https://app-admin:3000;
+
+            proxy_ssl_server_name on;
+            proxy_ssl_verify off;
         }
 
         error_page 404 /404.html;
