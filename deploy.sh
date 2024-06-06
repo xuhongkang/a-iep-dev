@@ -21,7 +21,7 @@ sudo service docker start
 
 # Configure Environment Variables
 # List of required environment variables
-required_env_vars=("DOMAIN", "WWW_DOMAIN", 'MONGO_INITDB_ROOT_USERNAME', 'MONGO_INITDB_ROOT_PASSWORD', 'PAYLOAD_SECRET')
+required_env_vars=('DOMAIN', 'WWW_DOMAIN', 'MONGO_INITDB_ROOT_USERNAME', 'MONGO_INITDB_ROOT_PASSWORD', 'PAYLOAD_SECRET')
 
 # Function to prompt for environment variables
 prompt_for_env_var() {
