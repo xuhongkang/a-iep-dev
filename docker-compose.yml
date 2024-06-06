@@ -54,7 +54,6 @@ services:
       - /etc/letsencrypt/live/www.${DOMAIN}:/ssl/www.${DOMAIN}:ro
     environment:
       DOMAIN: ${DOMAIN}
-      WWW_DOMAIN: www.${DOMAIN}
     restart: always
 
 volumes:

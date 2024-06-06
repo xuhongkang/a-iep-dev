@@ -89,7 +89,8 @@ http {
             proxy_pass https://app-frontend:3000;
 
             proxy_ssl_server_name on;
-            proxy_ssl_verify off;
+            proxy_ssl_verify on;
+            proxy_ssl_trusted_certificate /path/to/ca-certificates.crt;
         }
 
         location /api/ {
@@ -101,7 +102,8 @@ http {
             proxy_pass https://app-backend:8000;
 
             proxy_ssl_server_name on;
-            proxy_ssl_verify off;
+            proxy_ssl_verify on;
+            proxy_ssl_trusted_certificate /path/to/ca-certificates.crt;
         }
 
         location /cms/ {
@@ -112,7 +114,8 @@ http {
             proxy_pass https://app-admin:3000;
 
             proxy_ssl_server_name on;
-            proxy_ssl_verify off;
+            proxy_ssl_verify on;
+            proxy_ssl_trusted_certificate /path/to/ca-certificates.crt;
         }
 
         error_page 404 /404.html;
