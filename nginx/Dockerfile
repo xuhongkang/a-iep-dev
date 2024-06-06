@@ -3,13 +3,8 @@
 # Use the official NGINX image as a base image
 FROM nginx:latest
 
-# Install envsubst
-RUN apt-get update && apt-get install -y gettext-base
+# Copy custom NGINX configuration file to the container
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy Nginx configuration template
-COPY nginx.conf.template /etc/nginx/nginx.conf.template
-
-# Substitute environment variables and generate the final Nginx configuration
-RUN envsubst '${DOMAIN} ${WWW_DOMAIN}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
-
+# Expose the port NGINX will run on
 EXPOSE 80

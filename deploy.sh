@@ -35,7 +35,7 @@ echo \
 sudo apt-get update
 
 # Install Docker sub dependencies & certbot
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin certbot
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin certbot gettext-base
 sudo service docker start
 
 # Configure Environment Variables
@@ -52,6 +52,8 @@ done
 
 # Runs certbot to use Let's Encrypt to generate ssl certificates for the site
 sudo certbot certonly --standalone -d a-iep.org -d $DOMAIN www.$DOMAIN
+
+envsubst '${DOMAIN} ${WWW_DOMAIN}' < ./nginx/nginx.conf.template > ./nginx/nginx.conf
 
 # Build and run the Docker containers
 cd ./aiep-app
