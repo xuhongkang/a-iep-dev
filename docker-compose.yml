@@ -43,8 +43,10 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     volumes:
-      - /etc/letsencrypt/live/a-iep.org:/etc/nginx/ssl/a-iep.org:ro
-      - /etc/letsencrypt/live/www.a-iep.org:/etc/nginx/ssl/www.a-iep.org:ro
+      - /etc/letsencrypt/live/${DOMAIN}:/etc/nginx/ssl/${DOMAIN}:ro
+      - /etc/letsencrypt/live/www.${DOMAIN}:/etc/nginx/ssl/www.${DOMAIN}:ro
+      - /etc/letsencrypt/archive/${DOMAIN}:/etc/nginx/archive/${DOMAIN}:ro
+      - /etc/letsencrypt/archive/www.${DOMAIN}:/etc/nginx/archive/www.${DOMAIN}:ro
     ports:
       - '80:80'
       - '443:443'
