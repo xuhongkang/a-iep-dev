@@ -27,9 +27,9 @@ export default function UserLoginModal() {
     async function handleSubmit(e) {
         e.preventDefault();
         if (isSignUp) {
-            console.log(signup(formData))
+            console.log(await signup(formData))
         } else {
-            console.log(login(formData))
+            console.log(await login(formData))
         }
         // Assuming you want to navigate to home after successful login/sign up
         router.push('/');
