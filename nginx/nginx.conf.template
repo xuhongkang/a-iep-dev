@@ -35,9 +35,9 @@ http {
     server {
         listen 443 ssl;
         server_name ${DOMAIN} www.${DOMAIN};
-
-        ssl_certificate /etc/nginx/ssl/your_certificate.crt;
-        ssl_certificate_key /etc/nginx/ssl/your_private_key.key;
+        
+        ssl_certificate /etc/nginx/ssl/a-iep.org/fullchain.pem;
+        ssl_certificate_key /etc/nginx/ssl/a-iep.org/privkey.pem;
         ssl_protocols TLSv1.2 TLSv1.3;
         ssl_prefer_server_ciphers on;
         ssl_ciphers HIGH:!aNULL:!MD5;
@@ -66,18 +66,5 @@ http {
             proxy_set_header X-Forwarded-Proto https;
             proxy_pass http://app-admin:3000;
         }
-
-        error_page 404 /404.html;
-        location = /404.html {
-            root /usr/share/nginx/html;
-            internal;
-        }
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-            root /usr/share/nginx/html;
-            internal;
-        }
     }
-
 }
