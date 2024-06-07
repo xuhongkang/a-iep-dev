@@ -28,7 +28,14 @@ http {
 
     server {
         listen 80;
+        listen 443 ssl;
         server_name a-iep.org www.a-iep.org;
+
+        ssl_certificate /etc/nginx/ssl/a-iep.org/fullchain.pem;
+        ssl_certificate_key /etc/nginx/ssl/a-iep.org/privkey.pem;
+
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_ciphers HIGH:!aNULL:!MD5;
 
         location / {
             proxy_set_header Host $host;
