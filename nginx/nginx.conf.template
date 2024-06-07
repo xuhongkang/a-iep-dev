@@ -52,12 +52,6 @@ http {
             proxy_pass http://app-admin:3000;
         }
 
-        # Optionally, handle favicon requests if needed
-        location = /favicon.ico {
-            log_not_found off;
-            access_log off;
-        }
-
         error_page 404 /404.html;
         location = /404.html {
             root /usr/share/nginx/html;
