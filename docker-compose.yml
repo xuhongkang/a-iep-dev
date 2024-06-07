@@ -42,6 +42,9 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    volumes:
+      - /etc/letsencrypt/live/a-iep.org:/etc/nginx/ssl/a-iep.org:ro
+      - /etc/letsencrypt/live/www.a-iep.org:/etc/nginx/ssl/www.a-iep.org:ro
     ports:
       - '80:80'
       - '443:443'
@@ -49,9 +52,6 @@ services:
       - app-frontend
       - app-admin
       - app-backend
-    volumes:
-      - /etc/letsencrypt/live/${DOMAIN}:/ssl/${DOMAIN}:ro
-      - /etc/letsencrypt/live/www.${DOMAIN}:/ssl/www.${DOMAIN}:ro
     environment:
       DOMAIN: ${DOMAIN}
     restart: always
