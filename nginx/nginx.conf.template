@@ -10,19 +10,19 @@ events {
 }
 
 http {
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                     '$status $body_bytes_sent "$http_referer" '
+                     '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log  /var/log/nginx/access.log  main;
+    access_log /var/log/nginx/access.log main;
 
-    sendfile            on;
-    tcp_nopush          on;
-    keepalive_timeout   65;
+    sendfile on;
+    tcp_nopush on;
+    keepalive_timeout 65;
     types_hash_max_size 4096;
 
-    include             /etc/nginx/mime.types;
-    default_type        application/octet-stream;
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
 
     include /etc/nginx/conf.d/*.conf;
 
@@ -37,12 +37,11 @@ http {
         ssl_prefer_server_ciphers on;
         ssl_ciphers HIGH:!aNULL:!MD5;
 
-        # Ensure all requests are proxied to the backend services
         location / {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass http://app-frontend:3000;
         }
 
@@ -51,7 +50,7 @@ http {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass http://app-backend:8000;
         }
 
@@ -59,8 +58,14 @@ http {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Proto $scheme;
             proxy_pass http://app-admin:3000;
+        }
+
+        # Optionally, handle favicon requests if needed
+        location = /favicon.ico {
+            log_not_found off;
+            access_log off;
         }
 
         error_page 404 /404.html;
