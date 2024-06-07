@@ -27,21 +27,21 @@ http {
     include /etc/nginx/conf.d/*.conf;
 
     server {
-        listen       80;
-        listen       [::]:80;
-        server_name  ${DOMAIN} www.${DOMAIN};
+        listen 80;
+        server_name a-iep.org www.a-iep.org;
 
         # Redirect all HTTP requests to HTTPS
-        return 301 https://$host$request_uri;
+        location / {
+            return 301 https://$host$request_uri;
+        }
     }
 
     server {
         listen 443 ssl;
-        listen [::]:443 ssl;
-        server_name ${DOMAIN} www.${DOMAIN};
+        server_name a-iep.org www.a-iep.org;
 
-        ssl_certificate /etc/nginx/ssl/${DOMAIN}/fullchain.pem;
-        ssl_certificate_key /etc/nginx/ssl/${DOMAIN}/privkey.pem;
+        ssl_certificate /etc/nginx/ssl/a-iep.org/fullchain.pem;
+        ssl_certificate_key /etc/nginx/ssl/a-iep.org/privkey.pem;
 
         ssl_protocols TLSv1.2 TLSv1.3;
         ssl_prefer_server_ciphers on;
@@ -52,7 +52,7 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_pass https://app-frontend:3000;
+            proxy_pass http://app-frontend:3000;
         }
 
         location /api/ {
@@ -61,7 +61,7 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_pass https://app-backend:8000;
+            proxy_pass http://app-backend:8000;
         }
 
         location /cms/ {
@@ -69,7 +69,7 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_pass https://app-admin:3000;
+            proxy_pass http://app-admin:3000;
         }
     }
 }
