@@ -31,7 +31,9 @@ http {
         server_name a-iep.org www.a-iep.org;
 
         # Redirect all HTTP requests to HTTPS
-        return 301 https://$host$request_uri;
+        location / {
+            return 301 https://$host$request_uri;
+        }
     }
 
     server {
