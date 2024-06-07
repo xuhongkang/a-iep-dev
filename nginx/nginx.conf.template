@@ -30,8 +30,9 @@ http {
         listen 80;
         server_name a-iep.org www.a-iep.org;
         
-        # Redirect all HTTP requests to HTTPS
-        return 301 https://$host$request_uri;
+        # Do not perform HTTP to HTTPS redirect as Cloudflare handles it
+        # Simply respond with a 200 status to avoid loop
+        return 200 'HTTP requests are not supported on this server';
     }
 
     server {
