@@ -28,9 +28,14 @@ http {
 
     server {
         listen 80;
-        server_name ${DOMAIN} www.${DOMAIN};
-        return 301 https://$host$request_uri;
+        server_name a-iep.org www.a-iep.org;
+
+        # Redirect all HTTP requests to HTTPS
+        if ($scheme != "https") {
+            return 301 https://$host$request_uri;
+        }
     }
+
 
     server {
         listen 443 ssl;
