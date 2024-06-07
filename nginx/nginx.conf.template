@@ -29,10 +29,9 @@ http {
     server {
         listen 80;
         server_name a-iep.org www.a-iep.org;
-        
-        # Do not perform HTTP to HTTPS redirect as Cloudflare handles it
-        # Simply respond with a 200 status to avoid loop
-        return 200 'HTTP requests are not supported on this server';
+
+        # Redirect all HTTP requests to HTTPS
+        return 301 https://$host$request_uri;
     }
 
     server {
@@ -45,12 +44,18 @@ http {
         ssl_prefer_server_ciphers on;
         ssl_ciphers HIGH:!aNULL:!MD5;
 
+        # Add strict transport security for this domain
+        add_header Strict-Transport-Security "max-age=31536000" always;
+
         location / {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Proto https;
             proxy_pass http://app-frontend:3000;
+
+            # Avoid redirect loop by ensuring subrequests are handled correctly
+            proxy_redirect off;
         }
 
         location /api/ {
@@ -58,16 +63,22 @@ http {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Proto https;
             proxy_pass http://app-backend:8000;
+
+            # Avoid redirect loop by ensuring subrequests are handled correctly
+            proxy_redirect off;
         }
 
         location /cms/ {
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Proto https;
             proxy_pass http://app-admin:3000;
+
+            # Avoid redirect loop by ensuring subrequests are handled correctly
+            proxy_redirect off;
         }
 
         error_page 404 /404.html;
