@@ -23,13 +23,6 @@ http {
 
     server {
         listen 80;
-        server_name a-iep.org www.a-iep.org;
-
-        # Redirect all HTTP requests to HTTPS
-        return 301 https://$host$request_uri;
-    }
-
-    server {
         listen 443 ssl;
         server_name a-iep.org www.a-iep.org;
 
@@ -39,7 +32,6 @@ http {
         ssl_prefer_server_ciphers on;
         ssl_ciphers HIGH:!aNULL:!MD5;
 
-        add_header Strict-Transport-Security "max-age=31536000" always;
 
         location / {
             proxy_pass http://app-frontend:3000;
@@ -51,6 +43,7 @@ http {
         }
 
         location /api/ {
+            rewrite ^/api/(.*)$ /$1 break;
             proxy_pass http://app-backend:8000;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
