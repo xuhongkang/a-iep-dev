@@ -13,6 +13,10 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
   },
+  csrf: [
+    // whitelist of domains to allow cookie auth from
+    'https://a-iep.org'
+  ],
   routes: {
     api: '/cms/api',
     admin: '/cms/admin',
@@ -21,9 +25,6 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [Users],
-  csrf: [
-    'app-backend:8000'
-  ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
