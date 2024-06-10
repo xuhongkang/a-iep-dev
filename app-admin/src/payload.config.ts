@@ -9,6 +9,7 @@ import { buildConfig } from 'payload/config'
 import Users from './collections/Users'
 
 export default buildConfig({
+  serverURL: 'https://a-iep.org',
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
