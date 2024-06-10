@@ -34,7 +34,7 @@ http {
         listen 443 ssl;
         server_name a-iep.org www.a-iep.org;
         add_header 'Content-Security-Policy' 'upgrade-insecure-requests';
-        
+
         ssl_certificate /etc/nginx/ssl/a-iep.org/fullchain.pem;
         ssl_certificate_key /etc/nginx/ssl/a-iep.org/privkey.pem;
 
@@ -46,7 +46,7 @@ http {
             proxy_pass http://app-frontend:3000;
         }
 
-        location ^~ /api/ {
+        location /api/ {
             rewrite ^/api/(.*)$ /$1 break;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
