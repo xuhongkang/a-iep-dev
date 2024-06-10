@@ -1,5 +1,5 @@
 export async function login() {
-  const response = await fetch('https://a-iep.org/api/public/login', {
+  const response = await fetch('http://app-backend:8000/api/public/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
