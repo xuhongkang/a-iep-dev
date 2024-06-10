@@ -1,17 +1,12 @@
-export async function login() {
+export async function login(formData) {
   const url = 'https://a-iep.org/api/login';
-  const data = {
-    email: 'xu.hong@ai4impact.ai',
-    password: 'Racecar48'
-  };
-
   try {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(formData)
     });
 
     if (!response.ok) {
