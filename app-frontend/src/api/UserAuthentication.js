@@ -1,7 +1,7 @@
 export async function login() {
   const response = await fetch('https://a-iep.org/api/login');
-  result = await response.json()
-  return {isSuccessful: response.ok, message: result}
+  console.log(response)
+  return {isSuccessful: response.ok, message: response.json()}
 }
 
 export async function signup() {
