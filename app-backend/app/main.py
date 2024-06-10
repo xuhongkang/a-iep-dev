@@ -1,12 +1,28 @@
 from fastapi import FastAPI
-from app.routes import public, private
+from fastapi.middleware.cors import CORSMiddleware
+import requests
 
-app = FastAPI(root_path="/api/")
+app = FastAPI()
 
-# Include routers
-app.include_router(public.router, prefix="/public", tags=["public"])
-app.include_router(private.router, prefix="/private", tags=["private"])
+origins = [
+    "https://www.a-iep.org",
+]
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello World from FastAPI"}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/api/login")
+def user_login(email: str, password: str):
+    url = 'http://app-admin:3000/cms/api/users/login'
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        'email': email,
+        'password': password,
+    }
+    response = requests.post(url, headers=headers, json=data)
+    return response.json()
