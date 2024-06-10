@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 
-app = FastAPI()
+app = FastAPI(root_path='/api')
 
 origins = [
     "https://www.a-iep.org",
@@ -16,6 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/api/login")
+@app.get("/login")
 def user_login():
     return {"message": "Login successful"}
