@@ -1,12 +1,8 @@
 export async function login() {
-  const response = await fetch('https://a-iep.org/api/public/login', {
+  const response = await fetch('https://a-iep.org/api', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-    },
-    body: {
-      email: 'xu.hong@ai4impact.ai',
-      password: 'Racecar48'
     }
   });
   return {isSuccessful: response.ok, message: response.json()}
