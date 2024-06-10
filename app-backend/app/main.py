@@ -17,12 +17,5 @@ app.add_middleware(
 )
 
 @app.get("/api/login")
-def user_login(email: str, password: str):
-    url = 'http://app-admin:3000/cms/api/users/login'
-    headers = {'Content-Type': 'application/json'}
-    data = {
-        'email': email,
-        'password': password,
-    }
-    response = requests.post(url, headers=headers, json=data)
-    return response.json()
+def user_login():
+    return {"message": "Login successful"}
