@@ -2,7 +2,7 @@
 const apiBaseRoute = `https://${process.env.DOMAIN}/api`;
 
 export async function login(formData) {
-  const url = '${apiBaseRoute}/login';
+  const url = `${apiBaseRoute}/login`;
   console.log(url)
   try {
     const response = await fetch(url, {
@@ -27,7 +27,7 @@ export async function login(formData) {
 }
 
 export async function signup() {
-  const url = '${apiBaseRoute}/signup';
+  const url = `${apiBaseRoute}/signup`;
   console.log(url)
   try {
     const response = await fetch(url, {
