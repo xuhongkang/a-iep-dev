@@ -18,18 +18,29 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-class LoginRequest(BaseModel):
+class UserAuthRequest(BaseModel):
     email: str
     password: str
 
 @app.post("/login")
-def user_login(login_request: LoginRequest):
+def user_login(login_request: UserAuthRequest):
     url = 'http://app-admin:3000/cms/api/users/login'
     headers = {'Content-Type': 'application/json'}
-    data = login_request.dict()
+    data =     data = {
+        'email': login_request.email,
+        'password': login_request.password
+    }
     response = requests.post(url, headers=headers, json=data)
+    return response.json()
 
-    if response.status_code != 200:
-        raise HTTPException(status_code=response.status_code, detail=response.text)
-
+@app.post("/signup")
+def user_signup(signup_request: UserAuthRequest):
+    url = 'http://app-admin:3000/cms/api/users'
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        'email': signup_request.email,
+        'password': signup_request.password,
+        'role': 'user',
+    }
+    response = requests.post(url, headers=headers, json=data)
     return response.json()
