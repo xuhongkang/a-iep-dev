@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.routes import public, private
 
-app = FastAPI()
+app = FastAPI(root_path="/api/")
 
 # Include routers
 app.include_router(public.router, prefix="/public", tags=["public"])
