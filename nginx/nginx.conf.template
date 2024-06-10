@@ -30,7 +30,7 @@ http {
     }
 
     upstream admin {
-        server app-admin:3000;
+        server localhost:3001;
     }
 
     server {
