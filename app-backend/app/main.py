@@ -18,4 +18,11 @@ app.add_middleware(
 
 @app.get("/login")
 def user_login():
-    return {"message": "Login successful"}
+    url = 'http://app-admin:3000/cms/api/users/login'
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        'email': "xu.hong@ai4impact.ai",
+        'password': "Racecar48",
+    }
+    response = requests.post(url, headers=headers, json=data)
+    return {"message": response}
