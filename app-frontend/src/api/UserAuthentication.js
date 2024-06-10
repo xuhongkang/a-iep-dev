@@ -1,7 +1,9 @@
 
-const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
+const apiBaseRoute = `https://${process.env.DOMAIN}/api`;
 
 export async function login(formData) {
+  console.log('Huh?')
+  console.log(process.env.DOMAIN)
   const url = `${apiBaseRoute}/login`;
   console.log(url)
   try {
