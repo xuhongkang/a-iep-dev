@@ -1,9 +1,9 @@
 export async function login() {
-  const response = await fetch('http://app-backend:8000/api/private/login');
+  const response = await fetch('http://app-backend:8000/private/login');
   return {isSuccessful: response.ok, message: response.message}
 }
 
 export async function signup() {
-  const response = await fetch('http://app-backend:8000/api/private/signup');
+  const response = await fetch('http://app-backend:8000/private/signup');
   return {isSuccessful: response.ok, message: response.message}
 }
