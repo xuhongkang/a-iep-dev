@@ -9,7 +9,7 @@ export default {
           "secondary-content": "#143C89",
           "accent": "#00ff00",
           "neutral": "#D9D9D9",
-          "neutral-content": "000000",
+          "neutral-content": "#143C89",
           "base-100": "#ffffff", 
           "info": "#0000ff",
           "success": "#00ff00",

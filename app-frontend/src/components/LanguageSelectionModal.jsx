@@ -49,7 +49,7 @@ export default function LanguageSelectionModal() {
 
   return (
     <div className='h-full'>
-      <button className="btn btn-secondary btn-xs md:btn-md lg:btn-lg h-full" onClick={openModal}>
+      <button className="btn bg-transparent outline-none btn-xs md:btn-md lg:btn-lg h-full text-neutral-content" onClick={openModal}>
         {formatLocaleSwitcherText(languageSelectionButtonText)}
       </button>
       <dialog id="languageSelectionModal" className="modal items-center">

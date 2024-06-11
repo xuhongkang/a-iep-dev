@@ -12,7 +12,7 @@ export default function NavBar() {
     	<div className="flex-grow justify-end">
     		<LanguageSelectionModal/>
         <UserLoginModal/>
-      	</div>
+      </div>
     </div>
   );
 }
