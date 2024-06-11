@@ -3,10 +3,10 @@ services:
     build:
       context: ./app-frontend
       dockerfile: Dockerfile
+      args:
+        - DOMAIN=${DOMAIN}
     ports:
       - '3000:3000'
-    environment:
-      NEXT_PUBLIC_DOMAIN: ${DOMAIN}
     restart: always
 
   app-backend:
