@@ -61,7 +61,10 @@ With properly configured DNS routing & SSL certificates via Domain Provider, the
 Database services such as PostgreSQL, MongoDB & Qdrant are run in Docker Containers specified by Docker Compose. For security reasons, they also keep periodic snapshots in disk storage.
 
 ## Change Log:
-
+- Jun 10: Resolved SSL-Related Proxy Issues, Login & Signup
+- Jun 07: Deployed to Debian-Based internal environment
+- Jun 05: Subpath Routing Implemented
+- Jun 03: Deployed to RHEL-Based self-managed environment
 - May 24: Content Management System Approved and Implemented
 - May 23: Chatbot User Workflow Revision Approved
 - May 22: Backend Architecture Approved
