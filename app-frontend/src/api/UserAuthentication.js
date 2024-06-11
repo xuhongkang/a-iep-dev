@@ -1,12 +1,14 @@
 
+import useUserStore from '@/stores/userStore.js';
+
+const {setUser, clearUser } = useUserStore.getState();
 const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
 
 export async function login(formData) {
-  console.log('Huh?')
-  console.log(process.env.DOMAIN)
-  console.log(process.env.NEXT_PUBLIC_DOMAIN)
+  let loginResponse = {
+    isError: false
+  };
   const url = `${apiBaseRoute}/login`;
-  console.log(url)
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -15,15 +17,19 @@ export async function login(formData) {
       },
       body: JSON.stringify(formData)
     });
-
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(`Request failed with status ${response.status}: ${errorData.detail}`);
     }
-
     const result = await response.json();
-    console.log('Success:', result);
-    return result;
+    if (result.errors && result.errors.length > 0) {
+        loginResponse.isError = true
+    } else if (result.token && result.user && result.user.id) {
+        setUser(result.user.id, result.token)
+    } else {
+      throw new Error(`Unrecognized Response ${result}`)
+    }
+    return loginResponse;
   } catch (error) {
     console.error('Error:', error);
   }
@@ -31,7 +37,6 @@ export async function login(formData) {
 
 export async function signup() {
   const url = `${apiBaseRoute}/signup`;
-  console.log(url)
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -45,7 +50,6 @@ export async function signup() {
       const errorData = await response.json();
       throw new Error(`Request failed with status ${response.status}: ${errorData.detail}`);
     }
-
     const result = await response.json();
     console.log('Success:', result);
     return result;
