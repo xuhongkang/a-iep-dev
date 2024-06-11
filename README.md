@@ -13,6 +13,31 @@ aiep-app/
 ```
 
 ## Overview
+### Quickstart 
+To Deploy on Managed Server:
+```
+# SSH Into Server
+# Check Git version
+git --version
+# Install Git if not found
+sudo apt-get install git 
+# sudo yum install git for RHEL-based Environments such as Amazon Linux
+# Clone repository
+git clone https://github.com/xuhongkang/aiep-app.git 
+# Enter repository
+cd ./aiep-app 
+# Run deployment script
+sudo sh deploy.sh
+# On first run you will be prompted to enter unconfigured environment variables
+```
+To Rebuild Project After Pushing Local Changes:
+```
+# Ensure you're at the root of the repository
+sudo sh rebuild.sh
+# Remember to check the availability of environment variables, which are only set per session (for security reasons and best practices)
+```
+
+
 ### Frontend Application w/ NextJS
 
 The user-facing frontend web application hosted at a-iep.org. It serves users the below content:
@@ -71,10 +96,6 @@ Database services such as PostgreSQL, MongoDB & Qdrant are run in Docker Contain
 - May 20: Landing Page UI Implemented
 - May 17: UI/UX Design Revision Approved
 - May 13: Final Sprint Started
-
-## Benchmark Tests:
-### Webpage Initial Response Time:
-### Chatbot Messaging Concurrency:
 
 ## Considerations:
 ### Scalling
