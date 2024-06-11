@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { login, signup } from "@/api/UserAuthentication"
 
 export default function UserLoginModal() {
-    const [isSuccess, setIsSuccess] = useState(true)
+    const [isSuccess, setIsSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [isSignup, setIsSetUp] = useState(false)
     const [formData, setFormData] = useState({
@@ -29,9 +29,9 @@ export default function UserLoginModal() {
     async function handleSubmit(e) {
         e.preventDefault();
         if (isSignup) {
-            SignupResponse = await signup(formData)
+            const SignupResponse = await signup(formData)
         } else {
-            LoginResponse = await login(formData)
+            const LoginResponse = await login(formData)
             if (LoginResponse.isError) {
                 setIsError(true);
             } else {
