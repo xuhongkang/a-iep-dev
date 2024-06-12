@@ -1,8 +1,9 @@
 const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
+const cmsBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/cms/api`;
 
 export async function login(formData) {
   try {
-    const res = await fetch('https://a-iep.org/cms/api/users/login', {
+    const res = await fetch(`${cmsBaseRoute}/api/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

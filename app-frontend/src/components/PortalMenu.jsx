@@ -23,6 +23,15 @@ export default function PortalMenu() {
         </div>
     	<div className="flex-grow justify-end">
         <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
+            <h3>Upload and Translate</h3>
+        </button>
+        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
+            <h3>Ask Questions</h3>
+        </button>
+        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
+            <h3>Get Summary</h3>
+        </button>
+        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
             <h3>Portal Home</h3>
         </button>
     		<LanguageSelectionModal/>
