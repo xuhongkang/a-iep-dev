@@ -32,7 +32,7 @@ export default function UserLoginModal() {
             const SignupResponse = await signup(formData)
         } else {
             const LoginResponse = await login(formData)
-            if (LoginResponse.isError) {
+            if (LoginResponse) {
                 setIsError(true);
                 setFormData({
                     email: '',
