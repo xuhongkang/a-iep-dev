@@ -4,7 +4,7 @@ const cmsBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/cms/api`;
 export async function login(formData) {
   try {
     console.log(formData)
-    const res = await fetch(`${cmsBaseRoute}/api/users/login`, {
+    const res = await fetch(`${cmsBaseRoute}/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
