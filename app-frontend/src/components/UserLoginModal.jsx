@@ -6,6 +6,7 @@ import { login, signup } from "@/api/UserAuthentication"
 import { useCookies } from 'next-client-cookies';
 
 export default function UserLoginModal() {
+    const cookies = useCookies();
     const [isSuccess, setIsSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [isSignup, setIsSetUp] = useState(false)
