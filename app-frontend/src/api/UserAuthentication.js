@@ -1,22 +1,21 @@
-
-import useUserStore from '@/stores/userStore.js';
-
-const {setUser, clearUser } = useUserStore.getState();
 const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
 
 export async function login(formData) {
-  const res = await fetch('https://a-iep.org/cms/api/users/login', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    email: formData.email,
-    password: formData.password,
-  }),
-})
-  const result = await res.json()
-  console.log(result)
+  try {
+    const res = await fetch('https://a-iep.org/cms/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+      }),
+    })
+    return true
+  } catch (error) {
+    return false
+  }
 }
 
 export async function signup() {
