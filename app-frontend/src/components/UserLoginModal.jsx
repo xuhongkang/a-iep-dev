@@ -15,12 +15,7 @@ export default function UserLoginModal() {
     const router = useRouter();
 
     function openModal() {
-        if (hasCookie) {
-            setIsSuccess(true);
-            router.push('/portal');
-        } else {
-            document.getElementById('userLoginModal').showModal()
-        }
+        document.getElementById('userLoginModal').showModal()
     }
 
     function handleChange(e) {
