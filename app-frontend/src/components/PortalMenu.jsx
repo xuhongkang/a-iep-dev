@@ -2,16 +2,30 @@
 import LanguageSelectionModal from '@/components/LanguageSelectionModal'
 import UserLoginModal from '@/components/UserLoginModal'
 import { useRouter } from '@/navigation';
+import { logout } from '@/api/UserAuthentication';
 
 export default function PortalMenu() {
   const router = useRouter();
 
   function userLogout() {
+    logout();
     router.push('/')
   }
 
   function routeToHome() {
-    router.push('/home')
+    router.push('/portal/home')
+  }
+
+  function routeToUpload() {
+    router.push('/portal/upload')
+  }
+
+  function routeToSummary() {
+    router.push('/portal/summary')
+  }
+
+  function routeToChatbot() {
+    router.push('/portal/chatbot')
   }
 
   return (
@@ -22,22 +36,34 @@ export default function PortalMenu() {
             </button>
         </div>
     	<div className="flex-grow justify-end">
-        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
-            <h3>Upload and Translate</h3>
-        </button>
-        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
-            <h3>Ask Questions</h3>
-        </button>
-        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
-            <h3>Get Summary</h3>
-        </button>
-        <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
-            <h3>Portal Home</h3>
-        </button>
-    		<LanguageSelectionModal/>
+        <div className="hidden md:block">
+          <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
+              <p>Portal Home</p>
+          </button>
+          <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToUpload}>
+              <p>Upload and Translate</p>
+          </button>
+          <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToSummary}>
+              <p>Get Summary</p>
+          </button>
+          <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToChatbot}>
+              <p>Ask Questions</p>
+          </button>
+        </div>
+        <div className="block md:hidden dropdown dropdown-bottom">
+          <div tabIndex={0} role="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" className="btn m-1">Menu</div>
+          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a onClick={routeToHome}>Portal Home</a></li>
+            <li><a onClick={routeToUpload}>Upload and Translate</a></li>
+            <li><a onClick={routeToSummary}>Get Summary</a></li>
+            <li><a onClick={routeToChatbot}>Ask Questions</a></li>
+          </ul>
+        </div>
+        <LanguageSelectionModal/>
         <button className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={userLogout}>
             <h3>Logout</h3>
         </button>
+        
       </div>
     </div>
   );

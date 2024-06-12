@@ -2,38 +2,43 @@ const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
 const cmsBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/cms/api`;
 
 export async function login(formData) {
-  const res = await fetch(`${cmsBaseRoute}/users/login`, {
+  await fetch(`${cmsBaseRoute}/users/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: "include",
     body: JSON.stringify({
       email: formData.email,
       password: formData.password,
     }),
   })
-  return res.json()
 }
 
-export async function signup() {
-  const url = `${apiBaseRoute}/signup`;
+export async function signup(formData) {
   try {
-    const response = await fetch(url, {
-      method: 'POST',
+    await fetch(`${cmsBaseRoute}/{collection-slug}`, {
+      method: "POST", 
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Request failed with status ${response.status}: ${errorData.detail}`);
-    }
-    const result = await response.json();
-    console.log('Success:', result);
-    return result;
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.password,
+        role: 'user'
+      }),
+    })
   } catch (error) {
     console.error('Error:', error);
   }
+}
+
+export async function logout() {
+  await fetch('http://localhost:3000/api/[collection-slug]/logout', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 }

@@ -1,17 +1,16 @@
 import createIntlMiddleware from 'next-intl/middleware';
-import { NextResponse } from 'next/server';
 
-import {NextRequest} from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 import {pathnames, locales, localePrefix} from './config';
 
 
 export default async function middleware(request: NextRequest) {
-  const protectedRoutes = ['/home'];
-
-  // Check if the user is trying to access a protected route
+  const protectedRoutes = ['/portal'];
   for (const element of protectedRoutes) {
     if (request.nextUrl.pathname.includes(element)) {
-      
+      if (!request.cookies.has('payload-token')) {
+        return NextResponse.redirect(request.nextUrl.origin);
+      }
     }
   }
   const handleI18nRouting = createIntlMiddleware({
