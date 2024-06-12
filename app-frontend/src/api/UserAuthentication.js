@@ -5,7 +5,7 @@ const {setUser, clearUser } = useUserStore.getState();
 const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
 
 export async function login(formData) {
-  const res = await fetch('https://a-iep.org/api/[collection-slug]/login', {
+  const res = await fetch('https://a-iep.org/cms/api/[collection-slug]/login', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
