@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link } from "@/navigation"
 import { useRouter } from "@/navigation"
 import { login, signup } from "@/api/UserAuthentication"
+import { useCookies } from 'next-client-cookies';
 
 export default function UserLoginModal() {
     const [isSuccess, setIsSuccess] = useState(false)
@@ -15,6 +16,10 @@ export default function UserLoginModal() {
     const router = useRouter();
 
     function openModal() {
+        if (cookies.get('payload-token')) {
+            setIsSuccess(true);
+            router.push('/portal');
+        }
         document.getElementById('userLoginModal').showModal()
     }
 
@@ -35,7 +40,7 @@ export default function UserLoginModal() {
                 await login(formData)
                 setIsError(false)
                 setIsSuccess(true);
-                router.push('/home');
+                router.push('/portal');
             } catch (error) {
                 setIsError(true);
                 setFormData({
