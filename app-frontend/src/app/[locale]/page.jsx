@@ -1,8 +1,14 @@
-import {useTranslations} from 'next-intl';
-import {unstable_setRequestLocale} from 'next-intl/server';
 import LandingPage from '@/components/LandingPage'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+
+
 
 export default function Page() {
+  if (cookies().get('payload-token')) {
+    redirect('/portal')
+  }
+
   return (
     <LandingPage/>
 );

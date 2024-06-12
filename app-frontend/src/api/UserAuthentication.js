@@ -35,7 +35,7 @@ export async function signup(formData) {
 }
 
 export async function logout() {
-  await fetch('http://localhost:3000/api/users/logout', {
+  await fetch(`${cmsBaseRoute}/users/logout`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

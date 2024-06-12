@@ -3,7 +3,6 @@ import { useState } from "react"
 import { Link } from "@/navigation"
 import { useRouter } from "@/navigation"
 import { login, signup } from "@/api/UserAuthentication"
-import { getCookie } from "cookies-next"
 
 export default function UserLoginModal() {
     const [isSuccess, setIsSuccess] = useState(false)
@@ -16,11 +15,12 @@ export default function UserLoginModal() {
     const router = useRouter();
 
     function openModal() {
-        if (getCookie("payload-token")) {
+        if (hasCookie) {
             setIsSuccess(true);
             router.push('/portal');
+        } else {
+            document.getElementById('userLoginModal').showModal()
         }
-        document.getElementById('userLoginModal').showModal()
     }
 
     function handleChange(e) {

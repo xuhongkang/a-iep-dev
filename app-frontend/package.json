@@ -22,7 +22,6 @@
     "cookies-next": "^4.2.1",
     "daisyui": "^4.11.1",
     "eslint-config-next": "14.1.0",
-    "js-cookie": "^3.0.5",
     "next": "14.1.0",
     "next-intl": "^3.5.4",
     "openai": "^4.29.1",
