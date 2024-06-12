@@ -13,8 +13,10 @@ export default async function middleware(request: NextRequest) {
   // Check if the user is trying to access a protected route
   for (const element of protectedRoutes) {
     if (request.nextUrl.pathname.includes(element)) {
+      console.log('Breach')
     // If the user is not logged in, redirect to the login page
       if (!user_id) {
+        console.log('not found')
         return NextResponse.redirect(new URL('/', request.url));
       }
     }

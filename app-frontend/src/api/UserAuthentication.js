@@ -26,6 +26,7 @@ export async function login(formData) {
         loginResponse.isError = true
     } else if (result.token && result.user && result.user.id) {
         setUser(result.user.id, result.token)
+        console.log('Set User', result.user.id)
     } else {
       throw new Error(`Unrecognized Response ${result}`)
     }
