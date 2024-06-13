@@ -22,7 +22,7 @@ export default function LandingPage() {
 			<div className="absolute w-1/2 text-primary-content top-24 sm:top-24 md:top-38 lg:top-44 xl:top-52 pl-12 sm:pl-20 md:pl-32 lg:pl-36">
 				<h1 className="">AI-EP</h1>
 				<h2 className="leading-tight text-wrap pt-2 sm:pt-6 md:pt-8 lg:pt-10">
-					Simplifying IEPs for Parents & Caregivers
+					This Simplifying IEPs for Parents & Caregivers
 				</h2>
 			</div>
         </div>

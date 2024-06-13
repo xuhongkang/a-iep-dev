@@ -33,6 +33,8 @@ export default {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          'gradient-orange': 'linear-gradient(90deg, #F97316 0%, #FF9800 100%)',
+  
       },
       colors: {
         "whatsapp-background": "#ece5dd",
