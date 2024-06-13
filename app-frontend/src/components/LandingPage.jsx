@@ -20,9 +20,9 @@ export default function LandingPage() {
 			className="absolute left-1/2 w-1/2 p-6 sm:p-7 md:p-8 lg:p-10 top-12 sm:top-15 md:top-20 lg:top-28"
 			/>
 			<div className="absolute w-1/2 text-primary-content top-24 sm:top-24 md:top-38 lg:top-44 xl:top-52 pl-12 sm:pl-20 md:pl-32 lg:pl-36">
-				<h1 className="">AI-EP</h1>
+				<h1 className="">A-IEP</h1>
 				<h2 className="leading-tight text-wrap pt-2 sm:pt-6 md:pt-8 lg:pt-10">
-					Simplifying IEPs for Parents & Caregivers
+					Simplifying Individualized Education Programs (IEPs) for Parents & Caregivers
 				</h2>
 			</div>
         </div>

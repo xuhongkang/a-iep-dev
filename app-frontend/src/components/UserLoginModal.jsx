@@ -29,7 +29,18 @@ export default function UserLoginModal() {
     async function handleSubmit(e) {
         e.preventDefault();
         if (isSignup) {
-            const SignupResponse = await signup(formData)
+            try {   
+                await signup(formData)
+                setIsError(false)
+                setIsSuccess(true);
+                router.push('/portal');
+            } catch (error) {
+                setIsError(true);
+                setFormData({
+                    email: '',
+                    password: ''
+                });
+            }
         } else {
             try {   
                 await login(formData)
@@ -59,13 +70,17 @@ export default function UserLoginModal() {
                         <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span>Incorrect Username or Password, Please Try Again</span>
+                        <span>
+                            {isSignup ? "Account Already Exists, Please Sign In Instead" : "Incorrect Username or Password, Please Try Again"}
+                        </span>
                         </div>
                     )}
                     {isSuccess && (
                         <div role="alert" className="alert alert-success">
                         <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <span>Login Successful! Redirecting to home...</span>
+                        <span>
+                            {isSignup ? "Login Successful! Redirecting to home..." : "Sign Up Successful! Welcome to AIEP..."}
+                        </span>
                       </div>
                     )}
                     <form onSubmit={handleSubmit} className="flex-col items-center w-full h-full">
