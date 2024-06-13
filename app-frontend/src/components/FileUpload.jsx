@@ -1,6 +1,6 @@
 'use client'
 import { useState, useCallback } from 'react';
-import axios from 'axios';
+import {upload} from '@/api/JobProcessing'
 import { useDropzone } from 'react-dropzone';
 
 const CreateJob = () => {
@@ -32,16 +32,7 @@ const CreateJob = () => {
     formData.append('targetLocale', targetLocale);
 
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/jobs`,
-        formData,
-        {
-          withCredentials: true, // Ensure cookies are sent with the request
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+      upload(formData);
       console.log('Job created successfully:', response.data);
     } catch (error) {
       console.error('Error creating job:', error);

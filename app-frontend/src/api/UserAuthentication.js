@@ -1,8 +1,7 @@
-const apiBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/api`;
 const cmsBaseRoute = `https://${process.env.NEXT_PUBLIC_DOMAIN}/cms/api`;
 
 export async function login(formData) {
-  await fetch(`${cmsBaseRoute}/users/login`, {
+  return await fetch(`${cmsBaseRoute}/users/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -16,26 +15,22 @@ export async function login(formData) {
 }
 
 export async function signup(formData) {
-  try {
-    await fetch(`${cmsBaseRoute}/users`, {
-      method: "POST", 
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.email,
-        password: formData.password,
-        role: 'user'
-      }),
-    })
-  } catch (error) {
-    console.error('Error:', error);
-  }
+  return await fetch(`${cmsBaseRoute}/users`, {
+    method: "POST", 
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: formData.email,
+      password: formData.password,
+      role: 'user'
+    }),
+  })
 }
 
 export async function logout() {
-  await fetch(`${cmsBaseRoute}/users/logout`, {
+  return await fetch(`${cmsBaseRoute}/users/logout`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
