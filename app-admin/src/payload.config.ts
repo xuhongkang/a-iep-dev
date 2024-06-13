@@ -7,6 +7,8 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 import { buildConfig } from 'payload/config'
 
 import Users from './collections/Users'
+import Media from './collections/Media'
+import Jobs from './collections/Jobs'
 
 export default buildConfig({
   serverURL: 'https://a-iep.org',
@@ -21,7 +23,7 @@ export default buildConfig({
     graphQLPlayground: '/cms/graphql-playground',
   },
   editor: slateEditor({}),
-  collections: [Users],
+  collections: [Users, Media, Jobs],
   csrf: [
     'a-iep.org',
     'app-backend:8000'

@@ -32,7 +32,7 @@ const CreateJob = () => {
     formData.append('targetLocale', targetLocale);
 
     try {
-      upload(formData);
+      await upload(formData);
       console.log('Job created successfully:', response.data);
     } catch (error) {
       console.error('Error creating job:', error);
