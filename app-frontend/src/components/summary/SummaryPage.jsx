@@ -1,5 +1,5 @@
 import PortalMenu from '@/components/PortalMenu'
-import SummaryCards from '@/components/SummaryCards'
+import SummaryCards from '@/components/summary/SummaryCards'
 
 export default function SummaryPage() {
   return (

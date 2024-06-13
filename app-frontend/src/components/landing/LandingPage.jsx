@@ -1,5 +1,5 @@
-import NavBar from '@/components/NavBar';
-import UserLoginModal from '@/components/UserLoginModal';
+import NavBar from '@/components/landing/NavBar';
+import UserLoginModal from '@/components/landing/UserLoginModal';
 
 export default function LandingPage() {
   return (

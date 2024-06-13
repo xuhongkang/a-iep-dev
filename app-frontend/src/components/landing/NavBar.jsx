@@ -1,6 +1,6 @@
 'use client'
 import LanguageSelectionModal from '@/components/LanguageSelectionModal'
-import UserLoginModal from '@/components/UserLoginModal'
+import UserLoginModal from '@/components/landing/UserLoginModal'
 
 export default function NavBar() {
   return (

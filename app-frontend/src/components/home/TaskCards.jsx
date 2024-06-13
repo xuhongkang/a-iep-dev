@@ -1,5 +1,5 @@
 'use client'
-import FileUploadModal from '@/components/FileUploadModal'
+import FileUploadModal from '@/components/upload/FileUploadModal'
 import { useRouter } from "@/navigation"
 
 export default function TaskCards() {

@@ -1,4 +1,4 @@
-import LandingPage from '@/components/LandingPage'
+import LandingPage from '@/components/landing/LandingPage'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 

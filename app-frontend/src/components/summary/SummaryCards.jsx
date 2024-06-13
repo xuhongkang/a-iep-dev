@@ -1,4 +1,4 @@
-import SummaryCard from '@/components/SummaryCard'
+import SummaryCard from '@/components/summary/SummaryCard'
 
 export default function SummaryCards() {
 
