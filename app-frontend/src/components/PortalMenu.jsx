@@ -36,7 +36,7 @@ export default function PortalMenu() {
             </button>
         </div>
     	<div className="flex-grow justify-end">
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
               <p>Portal Home</p>
           </button>
@@ -50,7 +50,7 @@ export default function PortalMenu() {
               <p>Ask Questions</p>
           </button>
         </div>
-        <div className="block md:hidden dropdown dropdown-bottom">
+        <div className="block xl:hidden dropdown dropdown-bottom">
           <div tabIndex={0} role="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" className="btn m-1">Menu</div>
           <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
             <li><a onClick={routeToHome}>Portal Home</a></li>

@@ -37,7 +37,7 @@ export default function LandingPage() {
             <div className="w-1/3 flex flex-col items-center">
                 <img
                 src="/images/landingicon1.svg"
-                alt="Phone Interaction"
+                alt="Phone Upload"
                 className="h-32"
                 />
                 <h3 className="text-neutral-content text-center w-2/3 pt-2 sm:pt-3 md:pt-4 lg:pt-6">Securely Upload & Translate Your IEP</h3>
@@ -45,7 +45,7 @@ export default function LandingPage() {
             <div className="w-1/3 flex flex-col items-center">
                 <img
                 src="/images/landingicon2.svg"
-                alt="Chatbot"
+                alt="IEP Document Insights"
                 className="h-32"
                 />
                 <h3 className="text-neutral-content text-center w-2/3 pt-2 sm:pt-3 md:pt-4 lg:pt-6">Ask Questions About Your IEP</h3>
@@ -53,7 +53,7 @@ export default function LandingPage() {
             <div className="w-1/3 flex flex-col items-center">
                 <img
                 src="/images/landingicon3.svg"
-                alt="IEP Document"
+                alt="Chatbot Interactions"
                 className="h-32"
                 />
                 <h3 className="text-neutral-content text-center w-2/3 pt-2 sm:pt-3 md:pt-4 lg:pt-6">Summarize Your IEP</h3>
