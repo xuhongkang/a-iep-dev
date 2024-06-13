@@ -7,6 +7,9 @@ const Users: CollectionConfig = {
     maxLoginAttempts: 5, // Automatically lock a user out after X amount of failed logins
     lockTime: 600 * 1000, // Time period to allow the max login attempts
   },
+  admin: {
+    useAsTitle: 'email',
+  },
   access: {
     create: () => true,
   },
