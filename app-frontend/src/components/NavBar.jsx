@@ -1,3 +1,4 @@
+'use client'
 import LanguageSelectionModal from '@/components/LanguageSelectionModal'
 import UserLoginModal from '@/components/UserLoginModal'
 
@@ -11,7 +12,10 @@ export default function NavBar() {
         </div>
     	<div className="flex-grow justify-end">
     		<LanguageSelectionModal/>
-        <UserLoginModal/>
+        <button className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={() => document.getElementById('userLoginModal').showModal()}>
+            <h3>MyIEP Login</h3>
+        </button>
+        <UserLoginModal modal_id={'userLoginModal'}/>
       </div>
     </div>
   );

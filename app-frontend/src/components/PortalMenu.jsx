@@ -1,6 +1,5 @@
 'use client'
 import LanguageSelectionModal from '@/components/LanguageSelectionModal'
-import UserLoginModal from '@/components/UserLoginModal'
 import { useRouter } from '@/navigation';
 import { logout } from '@/api/UserAuthentication';
 
@@ -14,10 +13,6 @@ export default function PortalMenu() {
 
   function routeToHome() {
     router.push('/portal/home')
-  }
-
-  function routeToUpload() {
-    router.push('/portal/upload')
   }
 
   function routeToSummary() {
@@ -40,9 +35,6 @@ export default function PortalMenu() {
           <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToHome}>
               <p>Portal Home</p>
           </button>
-          <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToUpload}>
-              <p>Upload and Translate</p>
-          </button>
           <button className="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={routeToSummary}>
               <p>Get Summary</p>
           </button>
@@ -54,7 +46,6 @@ export default function PortalMenu() {
           <div tabIndex={0} role="btn bg-transparent btn-neutral btn-xs sm:btn-sm md:btn-md lg:btn-lg" className="btn m-1">Menu</div>
           <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
             <li><a onClick={routeToHome}>Portal Home</a></li>
-            <li><a onClick={routeToUpload}>Upload and Translate</a></li>
             <li><a onClick={routeToSummary}>Get Summary</a></li>
             <li><a onClick={routeToChatbot}>Ask Questions</a></li>
           </ul>

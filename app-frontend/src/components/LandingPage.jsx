@@ -27,7 +27,7 @@ export default function LandingPage() {
 			</div>
         </div>
       </div>
-      <div className="flex flex-col w-full px-5 sm:px-6 md:px-7 lg:px-10 items-center mt-8 sm:mt-10 md:mt-12 lg:mt-16">
+      <div className="flex flex-col w-full px-5 sm:px-6 md:px-7 lg:px-10 items-center mt-4 sm:mt-10 md:mt-12 lg:mt-16">
         <h1 className="flex text-secondary-content">MyIEP Portal</h1>
         <div className='flex flex-col text-neutral-content py-10 sm:py-12 md:py-16 lg:py-20'>
             <h3 className='flex mb-6 sm:mb-8 md:mb-10 lg:mb-14'>MyIEP helps you navigate and understand your child&apos;s Individualized Education Program (IEP) with ease and confidence, free of charge.</h3>
