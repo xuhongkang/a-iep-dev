@@ -1,4 +1,4 @@
-import PortalMenu from '@/components/home/PortalMenu'
+import PortalMenu from '@/components/PortalMenu'
 import TaskCards from '@/components/home/TaskCards'
 
 export default function HomePage() {
