@@ -5,7 +5,8 @@ import {pathnames, locales, localePrefix} from './config';
 
 
 export default async function middleware(request: NextRequest) {
-  const protectedRoutes = ['/portal'];
+  const protectedRoutes = ['/whatever'];
+  
   for (const element of protectedRoutes) {
     if (request.nextUrl.pathname.includes(element)) {
       if (!request.cookies.has('payload-token')) {
