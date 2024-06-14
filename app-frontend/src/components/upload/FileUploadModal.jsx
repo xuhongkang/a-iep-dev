@@ -48,7 +48,7 @@ export default function FileUploadModal({modal_id}) {
                 </div>
                 <div className="mt-4">
                     <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md">
-                    Upload
+                    Process IEP
                     </button>
                 </div>
                 <div className="mt-4">
@@ -62,12 +62,23 @@ export default function FileUploadModal({modal_id}) {
                             className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md"
                             onClick={() => handleDelete(file)}
                             >
-                            Delete
+                              Delete
                             </button>
                         </li>
                         ))}
                     </ul>
                     )}
+                </div>
+                <div className='p-4 flex flex-row gap-10 items-center'>
+                  <img
+                    src="/images/uploadicon2.svg"
+                    alt="Upload"
+                    className="w-12"
+                    />
+                  <div className='flex-col items-center'>
+                    <p>Need Help Uploading Your IEP?</p>
+                    <p>Contact us at 650.562.6200</p>
+                  </div>
                 </div>
             </form>
         </div>
@@ -84,15 +95,15 @@ const DropzoneArea = ({ onDrop, handleFileChange }) => {
   return (
     <div
       {...getRootProps()}
-      className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer"
+      className="mt-3 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer"
     >
       <input {...getInputProps()} className="sr-only" onChange={handleFileChange} />
       <div className="flex flex-col space-y-1 text-center items-center">
         <img
-			src="/images/uploadicon.svg"
-			alt="Upload"
-			className="w-12"
-			/>
+        src="/images/uploadicon.svg"
+        alt="Upload"
+        className="w-12"
+        />
         <div className="flex text-sm text-gray-600">
           <p className="pl-1">Drag & drop files here, or click to select files</p>
         </div>

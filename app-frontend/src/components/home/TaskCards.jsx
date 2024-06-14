@@ -24,7 +24,7 @@ export default function TaskCards() {
 
     return (
         <div className="p-4 rounded-xl w-full h-full outline-dotted">
-            <div className="flex flex-col lg:flex-row align-middle items-center justify-between md:m-5 gap-5">
+            <div className="flex flex-col lg:flex-row align-middle items-center justify-between md:m-5 md:mx-16">
                 {taskData.map((task, index) => (
                     <div key={index} className="card w-52 h-44 md:w-52 md:h-48 outline p-2 md:p-5 shadow-xl">
                         <img

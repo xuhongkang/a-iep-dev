@@ -8,9 +8,9 @@ const Bubble:JSXElementConstructor<any> = forwardRef(function Bubble({ content }
   const isUser = role === "user"
 
   return (
-    <div ref={ref  as RefObject<HTMLDivElement>} className={`chat ${isUser ? 'chat-start' : 'chat-end'} mt-2`}>
-      <div className={`flex ${isUser ? 'mx-2' : 'justify-end'}`}>
-        <div className={`chat-bubble ${isUser ? 'bg-secondary text-secondary-content' : 'bg-neutral text-neutral-content'}`}>
+    <div ref={ref  as RefObject<HTMLDivElement>} className={`chat ${isUser ? 'chat-end' : 'chat-start'} mt-2`}>
+      <div className={`flex ${isUser ? 'justify-end': 'mx-2'}`}>
+        <div className={`chat-bubble ${isUser ? 'bg-primary text-primary-content' : 'bg-neutral text-neutral-content'}`}>
           {content.processing ? (
             <div className="w-2 h-2 flex items-center justify-center">
               <div className="dot-flashing" />
