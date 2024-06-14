@@ -1,6 +1,6 @@
 #!/bin/bash
 # List of required environment variables
-required_env_vars="DOMAIN MONGO_INITDB_ROOT_USERNAME MONGO_INITDB_ROOT_PASSWORD PAYLOAD_SECRET"
+required_env_vars="DOMAIN MONGO_INITDB_ROOT_USERNAME MONGO_INITDB_ROOT_PASSWORD PAYLOAD_SECRET ASTRA_DB_APPLICATION_TOKEN ASTRA_DB_ENDPOINT ASTRA_DB_NAMESPACE"
 
 # Function to prompt for environment variables
 prompt_for_env_var() {
