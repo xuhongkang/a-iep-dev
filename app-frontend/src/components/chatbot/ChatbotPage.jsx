@@ -40,7 +40,7 @@ export default function Chatbot() {
               <div className='flex justify-between'>
                 <h1 className='text-xl md:text-2xl font-medium'>Ask My IEP</h1>
               </div>
-              <Markdown components={{a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>}} className="text-sm md:text-base mt-2 md:mt-4">Type a question below to find out more about your child's IEP.</Markdown>
+              <Markdown components={{a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>}} className="text-sm md:text-base mt-2 md:mt-4">Type a question below to find out more about your child&apos;s IEP.</Markdown>
             </div>
               <div className='flex-1 relative overflow-y-auto my-4 md:my-6 w-full'>
                 <div className='absolute w-full'>
