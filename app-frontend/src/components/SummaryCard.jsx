@@ -1,7 +1,7 @@
 "use client"; // This must be the first line in the file
 import { useState } from 'react';
 
-export default function SummaryCard({ gradient, title, subtitle, imageSrc, percentageProgress, percentageCurrent, percentageGoal }) {
+export default function SummaryCard({ gradient, title, subtitle, imageSrc, percentageProgress, percentageCurrent, percentageGoal, subCards }) {
   const [isCardOpen, setIsCardOpen] = useState(false);
 
   const handleButtonClick = () => {
@@ -57,24 +57,26 @@ export default function SummaryCard({ gradient, title, subtitle, imageSrc, perce
       </div>
 
       {isCardOpen && (
-        <div className="p-6 mx-auto self-center max-w-[1200px] mb-2 bg-[#D9D9D9] shadow-lg font-black rounded-lg ml-2 flex flex-row justify-between">
-          <div className='flex flex-col'>
-            <h3>title</h3>
-            <p className="mt-2 text-black-500">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-          </div>
-
-          <div className="flex flex-col justify-around">
-            <div className="flex flex-col items-center justify-center w-full ">
-              <span className="mr-2 text-black sm:inline">Current</span>
-              <CircleProgress percentage={percentageCurrent} color="#FF703B" />
+        <div style={{ margin: `0 auto` }} className="p-6 mx-auto  max-w-[1400px] mb-2  shadow-lg font-black rounded-lg ml-2 flex flex-col space-y-4">
+          {subCards.map((subCard, index) => (
+            <div key={index} className="p-8 bg-[#D9D9D9] rounded-lg flex flex-row">
+              <div >
+              <h3 className="font-bold">{subCard.title}</h3>
+              <p className="mt-2 text-black-500">{subCard.description}</p>
+              </div>
+           
+              <div className="flex flex-col justify-between mt-4 ml-4">
+                <div className="flex flex-col items-center">
+                  <span className="text-black">Current</span>
+                  <CircleProgress percentage={subCard.percentageCurrent} color="#FF703B" />
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-black">Goal</span>
+                  <CircleProgress percentage={subCard.percentageGoal} color="#72CA3D" />
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col items-center justify-center mt-4 self-end w-full">
-              <span className="mr-2 text-black sm:inline">Goal</span>
-              <CircleProgress percentage={percentageGoal} color="#72CA3D" />
-            </div>
-          </div>
+          ))}
         </div>
       )}
     </div>

@@ -9,6 +9,26 @@ export default function SummaryCards() {
       percentageProgress: 50,
       percentageCurrent: 30,
       percentageGoal: 70,
+      subCards: [
+        {
+          title: "1Strengths/Preferences/Interests",
+          description: "A Statewide Assessment is a test that all students in the state take to see how well they are learning in school. These tests cover subjects like English, math, and science. If your child needs extra help or special ways to take these tests, like using a different language or getting more time, the school will provide accommodations to support them. It’s important for parents to know about these tests and what extra help their child might need to do their best. You can find more information about statewide assessments.",
+          percentageCurrent: 30,
+          percentageGoal: 20,
+        },
+        {
+          title: "2Strengths/Preferences/Interests",
+          description: "A Statewide Assessment is a test that all students in the state take to see how well they are learning in school. These tests cover subjects like English, math, and science. If your child needs extra help or special ways to take these tests, like using a different language or getting more time, the school will provide accommodations to support them. It’s important for parents to know about these tests and what extra help their child might need to do their best. You can find more information about statewide assessments.",
+          percentageCurrent: 10,
+          percentageGoal: 70,
+        },
+        {
+          title: "3 Strengths/Preferences/Interests",
+          description: "A Statewide Assessment is a test that all students in the state take to see how well they are learning in school. These tests cover subjects like English, math, and science. If your child needs extra help or special ways to take these tests, like using a different language or getting more time, the school will provide accommodations to support them. It’s important for parents to know about these tests and what extra help their child might need to do their best. You can find more information about statewide assessments.",
+          percentageCurrent: 90,
+          percentageGoal: 50,
+        },
+      ]
     },
     {
       gradient: "bg-gradient-to-r from-teal-800 to-teal-400",
@@ -25,6 +45,26 @@ export default function SummaryCards() {
       percentageProgress: 100,
       percentageCurrent: 90,
       percentageGoal: 100,
+      subCards: [
+        {
+          title: "1 Strengths/Preferences/Interests",
+          description: "A Statewide Assessment is a test that all students in the state take to see how well they are learning in school. These tests cover subjects like English, math, and science. If your child needs extra help or special ways to take these tests, like using a different language or getting more time, the school will provide accommodations to support them. It’s important for parents to know about these tests and what extra help their child might need to do their best. You can find more information about statewide assessments.",
+          percentageCurrent: 30,
+          percentageGoal: 20,
+        },
+        {
+          title: "2 Strengths/Preferences/Interests",
+          description: "A Statewide Assessment is a test that all students in the state take to see how well they are learning in school. These tests cover subjects like English, math, and science. If your child needs extra help or special ways to take these tests, like using a different language or getting more time, the school will provide accommodations to support them. It’s important for parents to know about these tests and what extra help their child might need to do their best. You can find more information about statewide assessments.",
+          percentageCurrent: 10,
+          percentageGoal: 70,
+        },
+        {
+          title: "3 Strengths/Preferences/Interests",
+          description: "A Statewide Assessment is a test that all students in the state take to see how well they are learning in school. These tests cover subjects like English, math, and science. If your child needs extra help or special ways to take these tests, like using a different language or getting more time, the school will provide accommodations to support them. It’s important for parents to know about these tests and what extra help their child might need to do their best. You can find more information about statewide assessments.",
+          percentageCurrent: 90,
+          percentageGoal: 50,
+        },
+      ]
     },
     {
       gradient: "bg-gradient-to-r from-purple-800 to-purple-400",
@@ -58,14 +98,15 @@ export default function SummaryCards() {
         <div className="space-y-6">
           {cardData.map((card, index) => (
             <SummaryCard
-              key={index}
-              gradient={card.gradient}
-              title={card.title}
-              subtitle={card.subtitle}
-              imageSrc="/images/summary_card_bg.png"
-              percentageProgress={card.percentageProgress}
-              percentageCurrent={card.percentageCurrent}
-              percentageGoal={card.percentageGoal}
+            key={index}
+            gradient={card.gradient}
+            title={card.title}
+            subtitle={card.subtitle}
+            imageSrc="/images/summary_card_bg.png"
+            percentageProgress={card.percentageProgress}
+            percentageCurrent={card.percentageCurrent}
+            percentageGoal={card.percentageGoal}
+            subCards={card.subCards}
             />
           ))}
         </div>
