@@ -1,4 +1,17 @@
 services:
+  app-admin:
+    build:
+      context: ./app-admin
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3000'
+    depends_on:
+      - mongo
+    environment:
+      DATABASE_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+    restart: always
+  
   app-frontend:
     build:
       context: ./app-frontend
@@ -19,20 +32,21 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
-    restart: always
-  
-  app-admin:
-    build:
-      context: ./app-admin
-      dockerfile: Dockerfile
-    ports:
-      - '3001:3000'
     depends_on:
-      - mongo
-    environment:
-      DATABASE_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017
-      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      - redis
     restart: always
+
+  celery:
+    build:
+      context: ./app-backend/app/celery
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+  
+  redis:
+    image: redis:7.2
+    ports:
+      - "6379:6379"
 
   mongo:
     image: mongo:latest
