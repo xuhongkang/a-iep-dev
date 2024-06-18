@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from .tasks import long_running_task
 from celery.result import AsyncResult
 
@@ -18,9 +19,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class Param(BaseModel):
+    param: str
+
 @app.post("/enqueue")
-def enqueue_task(param: str):
-    result = long_running_task.delay(param)
+def enqueue_task(param: Param):
+    result = long_running_task.delay(param.param)
     return {"task_id": result.id}
 
 @app.get("/status/{task_id}")
