@@ -47,7 +47,7 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
 
   redis:
-    image: redis:7.2
+    image: redis:6.0
     ports:
       - "6379:6379"
 
