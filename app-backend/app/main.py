@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-from celery.tasks import long_running_task
+from tasks import long_running_task
 from celery.result import AsyncResult
 
 app = FastAPI(root_path='/api')
