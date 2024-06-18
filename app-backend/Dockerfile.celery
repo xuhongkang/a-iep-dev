@@ -8,8 +8,11 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the Celery application code
-COPY . .
+# Copy the application code
+COPY app/ ./app
+
+# Ensure the celery command is available in the container
+ENV PATH="/usr/local/bin:$PATH"
 
 # Command to run the Celery worker
-CMD ["celery", "-A", "celery_config.app", "worker", "--loglevel=info"]
+CMD ["celery", "-A", "app.celery_config.app", "worker", "--loglevel=info"]
