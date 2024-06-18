@@ -1,12 +1,16 @@
-from fastapi import FastAPI, BackgroundTasks
+from fastapi import FastAPI
+from pydantic import BaseModel
 from .tasks import long_running_task
 from celery.result import AsyncResult
 
 app = FastAPI()
 
+class TaskParams(BaseModel):
+    param: str
+
 @app.post("/enqueue")
-def enqueue_task(param: str):
-    task = long_running_task.delay(param)
+def enqueue_task(params: TaskParams):
+    task = long_running_task.delay(params.param)
     return {"task_id": task.id}
 
 @app.get("/status/{task_id}")
