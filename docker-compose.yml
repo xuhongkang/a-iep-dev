@@ -38,8 +38,8 @@ services:
 
   celery:
     build:
-      context: ./app-backend/app/celery
-      dockerfile: Dockerfile
+      context: ./app-backend
+      dockerfile: Dockerfile.celery
     depends_on:
       - redis
   
