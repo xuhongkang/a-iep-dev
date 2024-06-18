@@ -37,7 +37,7 @@ export default function Chatbot() {
           <h2 className='leading-relaxed'>Ask MyIEP</h2>
           <h3 className='leading-loose'>Type a question below to find out more about your child IEP</h3>
         </div>
-        <div className="mt-20 md:mt-28 left-0 w-full h-full z-0 p-3 md:p-6">
+        <div className="mt-4 md:mt-6 left-0 w-full h-full z-0 p-3 md:p-6">
           <main className="flex bg-secondary w-full h-full flex-col items-center justify-center">
             <section className='flex flex-col w-full h-full rounded-md p-2 md:p-6 pb-5 md:pb-8'>
               <div className='flex-1 relative overflow-y-auto my-4 md:my-6 w-full'>
