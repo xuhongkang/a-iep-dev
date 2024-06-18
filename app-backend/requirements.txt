@@ -3,3 +3,6 @@ uvicorn
 celery[redis]
 redis
 pydantic
+PyPDF2
+Pillow
+requests
