@@ -1,11 +1,12 @@
-import os
 from celery import Celery
+import os
 
-app = Celery('app',  # Make sure this matches the app name
-             broker='redis://redis:6379/0',
-             backend='redis://redis:6379/0')
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://redis:6379/0')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://redis:6379/0')
 
-app.conf.update(
+celery_app = Celery('app', broker=CELERY_BROKER_URL, backend=CELERY_RESULT_BACKEND)
+
+celery_app.conf.update(
     task_serializer='json',
     accept_content=['json'],
     result_serializer='json',
@@ -13,5 +14,5 @@ app.conf.update(
     enable_utc=True,
 )
 
-# Ensure the task module is imported
-app.autodiscover_tasks(['app'])
+# Autodiscover tasks in the "tasks" module
+celery_app.autodiscover_tasks(['app'])
