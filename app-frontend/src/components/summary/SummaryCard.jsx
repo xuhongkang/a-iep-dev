@@ -1,14 +1,13 @@
 "use client";
 import { useEffect, useState } from 'react';
 
-export default function SummaryCard({ gradient, title, subtitle, imageSrc, percentageProgress, percentageCurrent, percentageGoal }) {
+export default function SummaryCard({ gradient, title, subtitle, imageSrc, percentageCurrent, percentageGoal }) {
   const [isCardOpen, setIsCardOpen] = useState(false);
 
   useEffect(() => {
-    setCircleCompletion(percentageProgress, `progress-${title}`);
     setCircleCompletion(percentageCurrent, `current-${title}`);
     setCircleCompletion(percentageGoal, `goal-${title}`);
-  }, [percentageProgress, percentageCurrent, percentageGoal, title]);
+  }, [percentageCurrent, percentageGoal, title]);
 
   function setCircleCompletion(percentage, id) {
     const circle = document.getElementById(id);
@@ -42,38 +41,9 @@ export default function SummaryCard({ gradient, title, subtitle, imageSrc, perce
             zIndex: 0
           }}
         />
-        {percentageProgress < 100 && (
-          <div className="absolute right-0 sm:right-6 top-0 mt-1 sm:mt-6 flex items-center sm:scale-100 scale-75 z-20">
-            <span className="mr-2 text-white hidden sm:inline">Processed</span>
-            <svg width="40" height="40" viewBox="0 0 36 36">
-              <circle
-                cx="18" cy="18" r="16"
-                stroke="#d2d3d400" strokeWidth="4" fill="none"
-              />
-              <circle
-                id={`progress-${title}`}
-                cx="18" cy="18" r="16"
-                stroke="#fff" strokeWidth="4" fill="none"
-                strokeDasharray="100, 100" strokeDashoffset="0"
-                transform="rotate(-90 18 18)"
-              />
-              <text
-                x="18" y="20.35"
-                fill="#fff"
-                fontSize="10"
-                textAnchor="middle"
-                dominantBaseline="middle"
-              >
-                {percentageProgress}%
-              </text>
-            </svg>
-          </div>
-        )}
         <button 
           onClick={handleButtonClick} 
-          className="ml-4 rounded-full text-white absolute bottom-2 right-2"
-          style={{ fontSize: `30px` }}
-        >
+          className="btn btn-circle btn-outline btn-lg font-extrabold text-white z-10 text-4xl">
           {isCardOpen ? '-' : '+'}
         </button>
       </div>
