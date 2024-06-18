@@ -1,4 +1,4 @@
-from celery_config import app
+from .celery_config import app
 import time
 
 @app.task

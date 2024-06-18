@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
-from tasks import long_running_task
+from .tasks import long_running_task
 from celery.result import AsyncResult
 
 app = FastAPI(root_path='/api')
@@ -13,7 +12,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"], #Change for testing
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
