@@ -51,6 +51,7 @@ services:
 
   redis:
     image: redis:6.0
+    command: ["redis-server", "--appendonly", "yes", "--bind", "127.0.0.1"]
     ports:
       - "6379:6379"
 
