@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig } from 'payload/types';
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -49,10 +49,10 @@ const Users: CollectionConfig = {
       options: [
         'user',
         'advocate',
-        'admin'
+        'admin',
       ],
     },
   ],
-}
+};
 
-export default Users
+export default Users;

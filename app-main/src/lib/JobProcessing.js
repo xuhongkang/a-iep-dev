@@ -1,15 +1,16 @@
-const cmsBaseRoute = `${process.env.NEXT_PUBLIC_ADMIN_URL}/cms/api`;
+import axios from 'axios';
 
-export async function upload(formData) {
-    return await fetch(`${cmsBaseRoute}/jobs`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: "include",
-        body: JSON.stringify({
-            files: formData.files,
-            targetLocale: formData.targetLocale,
-        }),
+export const upload = async (formData) => {
+  try {
+    const response = await axios.post('/api/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      withCredentials: true, // Ensure cookies are sent with the request
     });
-}
+    return response.data;
+  } catch (error) {
+    console.error('Error uploading files:', error);
+    throw error;
+  }
+};

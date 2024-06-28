@@ -55,7 +55,7 @@ const SignupForm = () => {
           setIsSuccess(true);
           setTimeout(() => {
             router.push('/portal/home');
-          }, 1500); // Redirect after 1.5 seconds
+          }, 500); // Redirect after 0.5 seconds
         }
       } catch (err) {
         setGeneralError('An error occurred. Please try again.');
