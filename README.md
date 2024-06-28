@@ -13,7 +13,17 @@ aiep-app/
 ```
 
 ## Overview
+### Environment Variables
+'''
+'''
 ### Quickstart 
+To Test Locally:
+```
+# To build and run
+docker-compose -f docker-compose.local.yml up --build -d
+# To close & cleanup
+docker-compose -f docker-compose.local.yml down
+```
 To Deploy on Managed Server:
 ```
 # SSH Into Server

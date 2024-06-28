@@ -11,7 +11,7 @@ import Media from './collections/Media'
 import Jobs from './collections/Jobs'
 
 export default buildConfig({
-  serverURL: 'https://a-iep.org',
+  serverURL: process.env.PAYLOAD_PUBLIC_ADMIN_URL,
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
@@ -23,10 +23,14 @@ export default buildConfig({
     graphQLPlayground: '/cms/graphql-playground',
   },
   editor: slateEditor({}),
+  cors: [
+    '*',
+    `${process.env.PAYLOAD_PUBLIC_MAIN_URL}`
+  ],
   collections: [Users, Media, Jobs],
   csrf: [
     'a-iep.org',
-    'app-backend:8000'
+    `${process.env.PAYLOAD_PUBLIC_MAIN_URL}`
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -36,6 +40,6 @@ export default buildConfig({
   },
   plugins: [payloadCloud()],
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI,
+    url: process.env.PAYLOAD_PUBLIC_DATABASE_URI,
   }),
 })

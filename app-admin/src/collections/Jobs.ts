@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig } from 'payload/types';
 
 const Jobs: CollectionConfig = {
   slug: 'jobs',
@@ -6,6 +6,16 @@ const Jobs: CollectionConfig = {
     useAsTitle: 'uploadedBy',
   },
   timestamps: true,
+  access: {
+    create: ({ req: { user } }) => {
+      // Allow creation only if a user is authenticated
+      return !!user;
+    },
+    update: ({ req: { user } }) => {
+      // Allow update only if a user is authenticated and they own the job
+      return { uploadedBy: user.id };
+    },
+  },
   fields: [
     {
       name: 'uploadedBy',
@@ -14,6 +24,10 @@ const Jobs: CollectionConfig = {
       required: true,
       admin: {
         position: 'sidebar',
+      },
+      access: {
+        // Prevent users from modifying this field
+        update: () => false,
       },
     },
     {
@@ -51,7 +65,18 @@ const Jobs: CollectionConfig = {
         },
       ],
     },
-  ]
-}
+  ],
+  hooks: {
+    beforeChange: [
+      ({ data, req: { user } }) => {
+        // Set the uploadedBy field to the authenticated user's ID
+        if (!data.uploadedBy) {
+          data.uploadedBy = user.id;
+        }
+        return data;
+      },
+    ],
+  },
+};
 
-export default Jobs
+export default Jobs;
