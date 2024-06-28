@@ -13,7 +13,7 @@ const Jobs: CollectionConfig = {
     },
     update: ({ req: { user } }) => {
       // Allow update only if a user is authenticated and they own the job
-      return { uploadedBy: user.id };
+      return user ? { uploadedBy: user.id } : false;
     },
   },
   fields: [
@@ -34,22 +34,10 @@ const Jobs: CollectionConfig = {
       name: 'targetLocale',
       type: 'radio',
       options: [
-        {
-          label: 'English',
-          value: 'en',
-        },
-        {
-          label: 'Spanish',
-          value: 'es',
-        },
-        {
-          label: 'Tagalog',
-          value: 'tl',
-        },
-        {
-          label: 'Chinese',
-          value: 'zh',
-        },
+        { label: 'English', value: 'en' },
+        { label: 'Spanish', value: 'es' },
+        { label: 'Tagalog', value: 'tl' },
+        { label: 'Chinese', value: 'zh' },
       ],
       required: true,
     },

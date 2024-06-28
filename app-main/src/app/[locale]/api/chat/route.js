@@ -8,15 +8,6 @@ const openai = new OpenAI({
 
 const astraDb = new AstraDB(process.env.NEXT_PUBLIC_ASTRA_DB_APPLICATION_TOKEN, process.env.NEXT_PUBLIC_ASTRA_DB_ENDPOINT, process.env.NEXT_PUBLIC_ASTRA_DB_NAMESPACE);
 
-/**
- * @swagger
- * /api/hello:
- *   get:
- *     description: Returns the hello world
- *     responses:
- *       200:
- *         description: Hello World!
- */
 export async function POST(req) {
   try {
     const {messages, useRag, llm, similarityMetric} = await req.json();

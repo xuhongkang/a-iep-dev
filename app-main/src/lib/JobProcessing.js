@@ -6,7 +6,7 @@ export const upload = async (formData) => {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      withCredentials: true, // Ensure cookies are sent with the request
+      withCredentials: true,
     });
     return response.data;
   } catch (error) {

@@ -82,7 +82,7 @@ const LoginForm = () => {
               <span>{fieldErrors.password}</span>
             </div>
           )}
-          <button type='submit' className="btn btn-wide btn-primary btn-xs sm:btn-xs md:btn-sm lg:btn-md mt-3 p-2">
+          <button type='submit' className="btn btn-wide btn-primary btn-xs sm:btn-xs md:btn-sm lg:btn-md my-3 p-2">
             <h3 className="text-primary-content">Sign In</h3>
           </button>
         </form>
