@@ -21,6 +21,7 @@ const LoginForm = () => {
       setFieldErrors({});
       try {
         const response = await login(formData);
+        console.log(response)
         if (!response.ok) {
           const data = await response.json();
           setGeneralError(data.message || 'Login failed');
@@ -37,9 +38,10 @@ const LoginForm = () => {
           setIsSuccess(true);
           setTimeout(() => {
             router.push('/portal/home');
-          }, 1500); // Redirect after 1.5 seconds
+          }, 500); // Redirect after 1.5 seconds
         }
       } catch (err) {
+        console.log(err)
         setGeneralError('An error occurred. Please try again.');
       }
     };

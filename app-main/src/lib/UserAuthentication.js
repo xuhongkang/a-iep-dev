@@ -1,3 +1,5 @@
+import useUserStore from '../store/userStore';
+
 const cmsBaseRoute = `${process.env.NEXT_PUBLIC_ADMIN_URL}/cms/api`;
 
 export async function login(formData) {
@@ -13,6 +15,10 @@ export async function login(formData) {
         password: formData.password,
       }),
     });
+    const data = await response.json();
+    if (response.ok) {
+      useUserStore.getState().setUserId(data.user.id); // Store user ID in Zustand
+    }
     return response;
   } catch (err) {
     console.error('Login error:', err);
@@ -34,6 +40,10 @@ export async function signup(formData) {
         role: 'user'
       }),
     });
+    const data = await response.json();
+    if (response.ok) {
+      useUserStore.getState().setUserId(data.user.id); // Store user ID in Zustand
+    }
     return response;
   } catch (err) {
     console.error('Signup error:', err);
@@ -50,6 +60,9 @@ export async function logout() {
         'Content-Type': 'application/json',
       },
     });
+    if (response.ok) {
+      useUserStore.getState().clearUserId(); // Clear user ID from Zustand
+    }
     return response;
   } catch (err) {
     console.error('Logout error:', err);

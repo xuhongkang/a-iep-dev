@@ -1,6 +1,15 @@
 import axios from 'axios';
+import useUserStore from '../store/userStore';
 
 export const upload = async (formData) => {
+  const userId = useUserStore.getState().userId;
+
+  if (!userId) {
+    throw new Error('User ID is not available');
+  }
+
+  formData.append('userId', userId);
+
   try {
     const response = await axios.post('/api/upload', formData, {
       headers: {

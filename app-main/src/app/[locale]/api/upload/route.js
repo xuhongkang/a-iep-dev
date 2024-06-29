@@ -5,12 +5,16 @@ import cookie from 'cookie';
 
 export async function POST(req) {
   try {
-    // Parse cookies from the request
     const cookies = cookie.parse(req.headers.get('cookie') || '');
     const token = cookies['payload-token'];
+    const userId = req.body.get('userId'); // Get userId from the form data
 
     if (!token) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (!userId) {
+      return NextResponse.json({ message: 'User ID not found' }, { status: 400 });
     }
 
     const form = new FormData();
@@ -26,7 +30,7 @@ export async function POST(req) {
     // Create the job entry
     const jobResponse = await axios.post(
       `${process.env.NEXT_PUBLIC_ADMIN_URL}/cms/api/jobs`,
-      { uploadedBy: 'userId', targetLocale: 'en' },
+      { uploadedBy: userId, targetLocale: 'en' },
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -36,7 +40,7 @@ export async function POST(req) {
 
     // Upload each file and associate it with the job
     const uploadResponse = await axios.post(
-      `${process.env.NEXT_PUBLIC_ADMIN_URL}/media`,
+      `${process.env.NEXT_PUBLIC_ADMIN_URL}/cms/api/media`,
       form,
       {
         headers: {

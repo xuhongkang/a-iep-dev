@@ -6,8 +6,8 @@ import { logout } from '@/lib/UserAuthentication';
 export default function PortalMenu() {
   const router = useRouter();
 
-  function userLogout() {
-    logout();
+  async function userLogout() {
+    const response = await logout();
     router.push('/')
   }
 
